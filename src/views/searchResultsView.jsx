@@ -10,3 +10,10 @@ _____________________________________
 |       |                  |        |
 |_______|__________________|________|
 */
+export default function SearchResultsView(props) {
+  return (
+    <div class="searchResultsContainer">
+      <p>searchResults test.</p>
+    </div>
+  );
+}

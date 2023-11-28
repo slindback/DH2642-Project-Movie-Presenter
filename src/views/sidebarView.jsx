@@ -10,3 +10,10 @@ _____________________________________
 |       |                  |        |
 |_______|__________________|________|
 */
+export default function SearchbarView(props) {
+  return (
+    <div class="searchbarContainer">
+      <p>Searchbar test.</p>
+    </div>
+  );
+}
