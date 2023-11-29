@@ -2,6 +2,7 @@ import { defineComponent } from "vue";
 import Ads from "./adsPresenter.jsx";
 import Search from "./searchPresenter.jsx";
 import Sidebar from "./sidebarPresenter.jsx";
+import Details from "./detailsPresenter.jsx";
 import "/src/style.css";
 
 export default defineComponent({
