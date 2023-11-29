@@ -13,7 +13,7 @@ _____________________________________
 export default function SearchbarView(props) {
   return (
     <div class="searchbarContainer">
-      <p>Searchbar test.</p>
+      <p>Sidebar here</p>
     </div>
   );
 }

@@ -13,7 +13,7 @@ _____________________________________
 export default function SearchResultsView(props) {
   return (
     <div class="searchResultsContainer">
-      <p>searchResults test.</p>
+      <p>Movie grid here</p>
     </div>
   );
 }
