@@ -1,0 +1,18 @@
+{
+	"recommendations": [
+		// Javascript (ES6) Code Snippets
+		"xabikos.JavaScriptSnippets",
+		// Path Intellisense
+		"christian-kohler.path-intellisense",
+		// Auto Rename Tag
+		"formulahendry.auto-rename-tag",
+		// Better Comments
+		"aaron-bond.better-comments",
+		// HTML CSS Support
+		"ecmel.vscode-html-css",
+		// Sonarlint
+		"sonarsource.sonarlint-vscode",
+		// Prettier - Code formatter
+		"esbenp.prettier-vscode",
+	],
+}

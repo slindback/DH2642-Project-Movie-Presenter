@@ -1,0 +1,12 @@
+{
+    // internal
+    "explorer.excludeGitIgnore": true,
+
+    "files.exclude": {
+        "**/.git": true,
+    },
+
+    "search.exclude": {
+        "**/.git": true,
+    },
+}
