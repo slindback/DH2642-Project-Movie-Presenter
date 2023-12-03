@@ -1,6 +1,14 @@
-import { createApp } from "vue";
-import VueRoot from "./VueRoot.jsx";
+import { createApp, reactive } from "vue";
+import { VueRoot } from "/src/vuejs/VueRoot.jsx";
+import model from "/src/movieModel.js"
 
-const model = null;
-const app = createApp(<VueRoot model={model} />);
+
+// application state
+const reactiveModel = reactive(model);
+
+// mounting
+const app = createApp(<VueRoot model={reactiveModel}/>);
 app.mount("#root");
+
+// bootstrapping
+reactiveModel.doSearch({});
