@@ -3,6 +3,21 @@
   height: 100vh;
 }
 
+.movieGrid {
+  /* Remove the grid styles and adjust based on your preference */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.movieCard {
+  flex: 0 1 calc(20% - 20px); /* Adjusted to show 5 cards per row */
+  box-sizing: border-box;
+  /*border: 1px solid #ccc;*/
+  padding: 10px;
+  text-align: center;
+}
+
 .topnav .searchContainer {
   position: relative;
   display: inline-block;
@@ -63,10 +78,9 @@
 
 .searchbarContainer,
 .searchResultsContainer {
-  /*border: 1px solid #ccc;*/
-  box-sizing: border-box;
-  overflow: auto;
-  flex: 1; /* Set flex to 1 to take up all available space */
+  /* Add these styles to ensure the container adjusts its size based on content */
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .searchResultsContainer {

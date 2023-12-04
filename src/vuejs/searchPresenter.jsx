@@ -6,7 +6,7 @@ export default function Search(props) {
     <div class="searchContainer">
       <SearchbarView />
       <div class="searchResultsContainer">
-        <SearchResultsView />
+        <SearchResultsView model={props.model} />
       </div>
     </div>
   );
