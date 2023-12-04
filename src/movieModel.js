@@ -12,7 +12,7 @@ export default {
     removeMovie(movieToRemove) {
         this.removeMovieByID(movieToRemove.id);
     },
-    
+
     removeMovieByID(movieIdToRemove) {
         function shouldWeKeepMovieCB(movie) {
             return movie.id !== movieIdToRemove;
@@ -24,9 +24,15 @@ export default {
         this.searchParams = {...this.searchParams, query: _query};
     },
 
-    doSearch(searchParams) {
-        const promise = getMovieByQuery(searchParams.query | "");
-        resolvePromise(promise, this.searchResultPromiseState);
-        console.log(this.searchResultPromiseState);  // TODO: remove debug print
+    async doSearch(searchParams) {
+        try {
+            const movies = await getMovieByQuery(searchParams.query || "");
+            this.movies = movies; // Set the movies variable to the list of movies
+            resolvePromise(Promise.resolve(movies), this.searchResultPromiseState);
+        } catch (error) {
+            // Handle the error if needed
+            console.error("Error in doSearch:", error);
+            resolvePromise(Promise.reject(error), this.searchResultPromiseState);
+        }
     },
 };
