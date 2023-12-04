@@ -24,15 +24,8 @@ export default {
         this.searchParams = {...this.searchParams, query: _query};
     },
 
-    async doSearch(searchParams) {
-        try {
-            const movies = await getMovieByQuery(searchParams.query || "");
-            this.movies = movies; // Set the movies variable to the list of movies
-            resolvePromise(Promise.resolve(movies), this.searchResultPromiseState);
-        } catch (error) {
-            // Handle the error if needed
-            console.error("Error in doSearch:", error);
-            resolvePromise(Promise.reject(error), this.searchResultPromiseState);
-        }
+    doSearch(searchParams) {
+      const promise = getMovieByQuery(searchParams.query | "");
+      resolvePromise(promise, this.searchResultPromiseState);
     },
 };
