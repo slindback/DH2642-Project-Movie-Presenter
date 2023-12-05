@@ -12,7 +12,8 @@ _____________________________________
 */
 import { reactive } from "vue";
 export default function SearchResultsView(props) {
-  const { movies } = props.model;
+  const promise = props.model.searchResultPromiseState.data;
+  const movies = (promise === undefined || promise === null) ? [] : promise;
   const state = reactive({
     selectedMovie: null,
   });
@@ -25,9 +26,6 @@ export default function SearchResultsView(props) {
   return (
     <div className="searchResultsContainer">
       <h2>Search Results</h2>
-      {movies.length === 0 ? (
-        <p>No movies found.</p>
-      ) : (
         <div className="movieGrid">
           {movies.map((movie) => (
             <div
@@ -40,11 +38,9 @@ export default function SearchResultsView(props) {
                 alt={movie.title}
               />
               <p>{movie.title}</p>
-              {/* Add more details as needed */}
             </div>
           ))}
         </div>
-      )}
     </div>
   );
 }

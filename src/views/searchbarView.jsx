@@ -12,18 +12,26 @@ _____________________________________
 */
 export default
 function SearchbarView(props) {
-  const handleSearch = (event) => {
+
+  const inputHandlerACB = (event) => {
+    props.onInputChange(event.target.value);
+  }
+
+  const handleSearchACB = (event) => {
     event.preventDefault(); // Prevents the form from submitting and refreshing the page
+    props.onSearchClick();
     console.log('Search made!');
-  };
+  }
 
   return (
     <div className="topnav">
-      <form onSubmit={handleSearch} className="searchContainer">
+      <form onSubmit={handleSearchACB} className="searchContainer">
         <div className="inputContainer">
           <input
             type="text"
             placeholder="Search.."
+            value={props.text || ""}
+            onChange={inputHandlerACB}
           />
           <button type="submit" className="magnifyingGlassBtn">
             <img
