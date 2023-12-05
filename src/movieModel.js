@@ -25,7 +25,7 @@ export default {
     },
 
     doSearch(searchParams) {
-      const promise = getMovieByQuery(searchParams.query | "");
+      const promise = getMovieByQuery(searchParams.query || "");
       resolvePromise(promise, this.searchResultPromiseState);
     },
 };
