@@ -10,22 +10,40 @@ _____________________________________
 |       |                  |        |
 |_______|__________________|________|
 */
-import { reactive } from "vue";
+import { reactive, watch } from "vue";
+
 export default function SearchResultsView(props) {
-  const promise = props.model.searchResultPromiseState.data;
-  const movies = (promise === undefined || promise === null) ? [] : promise;
+  const promiseState = props.model.searchResultPromiseState;
+  const movies = promiseState.data || [];
   const state = reactive({
     selectedMovie: null,
+    isLoading: !promiseState.data && promiseState.promise,
   });
+
+  watch(
+    () => props.model.searchResultPromiseState,
+    () => {
+      state.isLoading = !promiseState.data && promiseState.promise;
+    }
+  );
 
   const handleMovieClick = (movie) => {
     state.selectedMovie = movie;
-    console.log("Selected Movie:", movie); // TODO: remove debug print
+    console.log("Selected Movie:", movie);
   };
 
   return (
     <div className="searchResultsContainer">
       <h2>Search Results</h2>
+      {state.isLoading ? (
+        <div className="loadingContainer">
+          <img
+            src="https://www.elevateyourwellness.org/Content/image/loader2.gif"
+            alt="Loading..."
+            className="loadingGif"
+          />
+        </div>
+      ) : (
         <div className="movieGrid">
           {movies.map((movie) => (
             <div
@@ -41,6 +59,7 @@ export default function SearchResultsView(props) {
             </div>
           ))}
         </div>
+      )}
     </div>
   );
 }

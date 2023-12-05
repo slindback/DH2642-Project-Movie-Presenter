@@ -37,6 +37,18 @@
   position: relative; /* Add this line to make it a reference point for absolute positioning */
 }
 
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Adjust the height to your preference */
+}
+
+.loadingGif {
+  width: 50px; /* Adjust the width to your preference */
+  height: auto;
+}
+
 .magnifyingGlass {
   position: absolute;
   top: 50%;
@@ -78,9 +90,8 @@
 
 .searchbarContainer,
 .searchResultsContainer {
-  /* Add these styles to ensure the container adjusts its size based on content */
-  display: flex;
-  flex-wrap: wrap;
+  margin-top: 10px;
+  position: relative;
 }
 
 .searchResultsContainer {
