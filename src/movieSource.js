@@ -4,8 +4,7 @@ import {
     SEARCH_PREFIX,
     SEARCH_SUFFIX,
     FIND_PREFIX,
-    FIND_SUFFIX,
-    TRENDING
+    FIND_SUFFIX
 } from '/src/tmdbConfig.js'
 
 
@@ -17,11 +16,19 @@ export function getMovieByID(movieId) {
 }
 
 export function getMovieByQuery(query) {
-  const URL = (query === "" || query === 0) ? BASE_URL + TRENDING : BASE_URL + SEARCH_PREFIX + query + SEARCH_SUFFIX;
 
-  return fetch(URL, API_OPTIONS)
-    .then(responseToJsonACB)
-    .then(keepJsonResultsCB);
+    let URL;
+    if (query) {
+        URL = BASE_URL + SEARCH_PREFIX + query + SEARCH_SUFFIX;
+    } else {
+        // should this be it's own function?
+        // e.g. getTrendingMovies()
+        URL = BASE_URL + "trending/movie/day?language=en-US";
+    }
+
+    return fetch(URL, API_OPTIONS)
+      .then(responseToJsonACB)
+      .then(keepJsonResultsCB);
 }
 
 

@@ -1,8 +1,13 @@
-import { getMovieByQuery } from "/src/movieSource";
+import { getMovieByQuery, getMovieByID } from "/src/movieSource";
 import resolvePromise from "/src/utils";
 
 export default {
     movies: [],
+
+    currentMovie: null,
+    currentMoviePromiseState: {},
+
+    searchParams: {},
     searchResultPromiseState: {},
 
     addMovie(movieToAdd) {
@@ -13,11 +18,24 @@ export default {
         this.removeMovieByID(movieToRemove.id);
     },
 
-    removeMovieByID(movieIdToRemove) {
+    removeMovieByID(movieIDToRemove) {
         function shouldWeKeepMovieCB(movie) {
-            return movie.id !== movieIdToRemove;
+            return movie.id !== movieIDToRemove;
         }
         this.movies = this.movies.filter(shouldWeKeepMovieCB);
+    },
+
+    setCurrentMovie(movieID) {
+        if (movieID) {
+            if (this.currentMovie !== movieID) {
+                this.currentMovie = movieID;
+                const promise = getMovieByID(movieID);
+                resolvePromise(promise, this.currentMoviePromiseState);
+            }
+        } else {
+            this.currentDish = null;
+            this.currentDishPromiseState = {};
+        }
     },
 
     setSearchQuery(_query){
