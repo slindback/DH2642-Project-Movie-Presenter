@@ -9,19 +9,26 @@ function SearchbarView(props) {
   }
 
   function handleSearchRequestACB(event) {
-    // Prevents the form from submitting and refreshing the page
     event.preventDefault();
     props.onSearchRequest();
   }
 
   return (
-    <form onSubmit={handleSearchRequestACB}>
-      <input className="searchFormInput"
-        type = "text"
-        placeholder = "Search..."
-        value = {props.text || ""}
-        onChange = {handleInputChangeACB}
+    <form onSubmit={handleSearchRequestACB} className="searchFormContainer">
+      <input
+        className="searchFormInput"
+        type="text"
+        placeholder="Search..."
+        value={props.text || ""}
+        onChange={handleInputChangeACB}
       />
+      <button className="searchButton" onClick={handleSearchRequestACB}>
+        <img
+          src="img/misc/magnifying-glass-icon.jpg"
+          alt="Search"
+          className="searchButtonIcon"
+        />
+      </button>
     </form>
   );
 }

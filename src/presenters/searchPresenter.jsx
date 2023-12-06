@@ -33,11 +33,11 @@ export default function Search(props) {
     if (!props.model.searchResultPromiseState.promise) {
       return "No data...";
     }
-  
+
     if (props.model.searchResultPromiseState.error) {
       return props.model.searchResultPromiseState.error;
     }
-  
+
     if (props.model.searchResultPromiseState.data) {
 
       function handleSelectResultACB(dish) {
