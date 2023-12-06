@@ -59,6 +59,15 @@
 .searchResultCard {
   width: 300px;
   height: 500px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.searchResultCard:hover {
+  transform: scale(1.05);
+}
+
+.searchResultCard:active {
+  transform: scale(0.95);
 }
 
 .searchResultImage {
