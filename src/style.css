@@ -80,7 +80,37 @@
 }
 
 .detailsContainer {
+  text-align: left;
+  padding: 20px;
+}
 
+.titleHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rating {
+  text-align: right;
+}
+
+.year {
+  margin-top: 10px;
+}
+
+.picture {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.moviePoster,
+.movieBackdrop {
+  width: 45%; /* Adjust the width as needed */
+  height: auto;
+}
+
+.genres {
+  margin-top: 20px;
 }
 
 .adsContainer {
