@@ -1,13 +1,11 @@
-/* Details about choosen movie.
-_____________________________________
-| ...   |                  |        |
-|       |   detailsView    |        |
-|       |                  |        |
-|       |                  |        |
-|       |                  |        |
-|       |                  |        |
-|       |                  |        |
-|       |                  |        |
-|_______|__________________|________|
-*/
-export default function detailsView(props) { }
+import "/src/style.css";
+
+
+export default
+function DetailsView(props) {
+  return (
+    <div className="detailsContainer">
+      Details here
+    </div>
+  );
+}

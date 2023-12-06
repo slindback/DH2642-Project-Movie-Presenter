@@ -1,20 +1,10 @@
-/* Rolling fake ads
-_____________________________________
-| ...   | ...              |        |
-|       |__________________|        |
-|       |                  |        |
-|       |                  |        |
-|       |                  |adsView |
-|       |                  |        |
-|       |                  |        |
-|       |                  |        |
-|_______|__________________|________|
-*/
 import { ref, watchEffect, onBeforeUnmount } from "vue";
+import "/src/style.css";
+
 
 export default {
   setup() {
-    const adContext = import.meta.globEager("../ads/*.{png,jpg,jpeg,svg}");
+    const adContext = import.meta.globEager("/img/ads/*.jpg");
 
     // Array of ad sources
     const adSources = Object.values(adContext).map((module) => module.default);
@@ -51,13 +41,9 @@ export default {
 
   render() {
     return (
-      <div style="width: 100%; max-width: 100%; height: auto; max-height: 100%; overflow: hidden;">
-        <img
-          src={this.currentAdSource}
-          alt="Ad"
-          style="width: 100%; height: auto; max-width: 100%; max-height: 100%;"
-        />
-      </div>
+      <img className="adImage"
+        src = {this.currentAdSource}
+      />
     );
   },
 };

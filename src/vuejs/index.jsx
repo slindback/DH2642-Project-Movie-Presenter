@@ -1,5 +1,5 @@
 import { createApp, reactive } from "vue";
-import { VueRoot } from "/src/vuejs/VueRoot.jsx";
+import { VueRoot, makeRouter } from "/src/vuejs/VueRoot.jsx";
 import model from "/src/movieModel.js"
 
 
@@ -8,6 +8,7 @@ const reactiveModel = reactive(model);
 
 // mounting
 const app = createApp(<VueRoot model={reactiveModel}/>);
+app.use(makeRouter(reactiveModel));
 app.mount("#root");
 
 // bootstrapping

@@ -1,19 +1,11 @@
-/* Will show WatchLater-list. Filter options at the top
-_____________________________________
-| ...   | ...              |        |
-|       |__________________|        |
-|       |                  |        |
-|       |                  |        |
-|sidebar|                  |        |
-| View  |                  |        |
-|       |                  |        |
-|       |                  |        |
-|_______|__________________|________|
-*/
-export default function SearchbarView(props) {
+import "/src/style.css";
+
+
+export default
+function SidebarView(props) {
   return (
-    <div class="searchbarContainer">
-      <p>Sidebar here</p>
+    <div>
+      Sidebar here
     </div>
   );
 }
