@@ -97,16 +97,17 @@
   margin-top: 10px;
 }
 
-.picture {
+.pictures {
   margin-top: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: start; /* or justify-content: flex-start; */
+  height: 300px; /* Set a specific height for the container */
 }
 
 .moviePoster,
 .movieBackdrop {
-  width: 45%; /* Adjust the width as needed */
-  height: auto;
+  height: 100%; /* Set a fixed height to maintain aspect ratio */
+  object-fit: cover; /* Ensure the image covers the entire container */
 }
 
 .genres {
