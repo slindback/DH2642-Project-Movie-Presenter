@@ -1,19 +1,22 @@
 import {
+    API_KEY,
     API_OPTIONS,
     BASE_URL,
     SEARCH_PREFIX,
     SEARCH_SUFFIX,
-    FIND_PREFIX,
-    FIND_SUFFIX
+    //FIND_PREFIX,
+    //FIND_SUFFIX
 } from '/src/tmdbConfig.js'
 
 
 export function getMovieByID(movieId) {
-    const URL = BASE_URL + FIND_PREFIX + movieId + FIND_SUFFIX;
+    const URL = `${BASE_URL}movie/${movieId}`;
+
     return fetch(URL, API_OPTIONS)
-      .then(responseToJsonACB)
-      .then(keepJsonResultsCB);
+        .then(responseToJsonACB)
+        .then(data => data || {});
 }
+
 
 export function getMovieByQuery(query) {
 

@@ -40,10 +40,9 @@ export default function Search(props) {
 
     if (props.model.searchResultPromiseState.data) {
 
-      function handleSelectResultACB(dish) {
-        props.model.setCurrentMovie(dish.id)
+      function handleSelectResultACB(movie) {
+        props.model.setCurrentMovie(movie.id)
       };
-
       return (
         <SearchResultView
           searchResults = {props.model.searchResultPromiseState.data}
