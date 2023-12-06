@@ -1,114 +1,75 @@
 .flexParent {
   display: flex;
-  height: 100vh;
 }
 
-.movieGrid {
-  /* Remove the grid styles and adjust based on your preference */
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+.sidebarContainer {
+  flex-basis: 200px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: 98vh;
 }
 
-.movieCard {
-  flex: 0 1 calc(20% - 20px); /* Adjusted to show 5 cards per row */
-  box-sizing: border-box;
-  /*border: 1px solid #ccc;*/
-  padding: 10px;
-  text-align: center;
-}
-
-.topnav .searchContainer {
-  position: relative;
-  display: inline-block;
-}
-
-.topnav input[type=text] {
-  width: calc(100% - 30px); /* Adjust the width to your preference */
-  padding: 6px;
-  border: 1px solid gray;
-  border-radius: 5px;
-  background-color: white;
-  color: black;
-  margin: 8px 0;
-  font-size: 14px;
-  height: 100%;
-  box-sizing: border-box;
-  position: relative; /* Add this line to make it a reference point for absolute positioning */
-}
-
-.loadingContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px; /* Adjust the height to your preference */
-}
-
-.loadingGif {
-  width: 50px; /* Adjust the width to your preference */
-  height: auto;
-}
-
-.magnifyingGlass {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 10px;
-  width: 20px;
-  height: auto;
-  cursor: pointer;
-}
-
-.sidebar,
-.mainContent {
-  /*border: 1px solid #ccc;*/
-  box-sizing: border-box;
-}
-
-.sidebar {
-  flex: 1;
-}
-
-.mainContent {
-  display: flex;
-  flex-direction: column;
-  flex: 4;
-}
-
-.searchContainer,
-.ads {
-  /*border: 1px solid #ccc;*/
-  box-sizing: border-box;
-  overflow: auto;
-  flex: 1;
+.mainContainer {
+  padding-left: 0.5%;
+  padding-right: 0.5%;
+  flex-grow: 1;
 }
 
 .searchContainer {
+
+}
+
+.searchFormContainer {
+  width: 100%;
+  height: 24px;
+}
+
+.searchFormInput {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+
+.searchResultContainer {
+  text-align: center;
+}
+
+.searchResultGrid {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
-.searchbarContainer,
-.searchResultsContainer {
-  margin-top: 10px;
-  position: relative;
+.searchResultCard {
+  width: 300px;
+  height: 500px;
 }
 
-.searchResultsContainer {
-  margin-top: 10px;
+.searchResultImage {
+  width: 100%;
+  height: calc(100% - 50px);
 }
 
-/* Media query for wider screens */
-@media screen and (min-width: 700px) {
-  .mainContent {
-    flex-direction: row;
-  }
+.searchResultText {
+  font-size: 16px;
+}
 
-  .search {
-    flex: 4;
-  }
+.detailsContainer {
 
-  .ads {
-    flex: 1;
-  }
+}
+
+.adsContainer {
+  flex-basis: 200px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: 98vh;
+}
+
+.adImage {
+  width: 100%;
+  height: 100%;
+}
+
+.loadingImage {
+
 }
