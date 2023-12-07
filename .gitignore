@@ -9,6 +9,7 @@ package-lock.json
 dist
 
 # Firebase
+.firebase
 firebase-debug.log
 firebaseConfig.js
 
