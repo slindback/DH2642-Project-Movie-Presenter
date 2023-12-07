@@ -8,5 +8,10 @@ package-lock.json
 # Vue
 dist
 
+# Firebase
+.firebase
+firebase-debug.log
+firebaseConfig.js
+
 # App
 tmdbConfig.js

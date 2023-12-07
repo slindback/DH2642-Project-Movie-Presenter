@@ -1,11 +1,20 @@
 import { defineConfig } from 'vite';
 import vueJsxPlugin from '@vitejs/plugin-vue-jsx';
-import vuePlugin from '@vitejs/plugin-vue';
+import virtualHtml from 'vite-plugin-virtual-html';
+
+
+const pages = {
+    "index": {
+        entry: "/src/vuejs/index.jsx",
+        title: "MoviePlanner",
+        body: "<div id='root'></div>"
+    }
+}
 
 export default defineConfig({
     plugins: [
         vueJsxPlugin(),
-       //  vuePlugin(),      for .vue files
+        virtualHtml({pages})      // HTML mappings
     ],
     server: {
         port: 8080,
