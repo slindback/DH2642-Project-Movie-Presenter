@@ -6,23 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome to Firebase Hosting</title>
 
-    <!-- update the version number as needed -->
+    <!-- Update the version number as needed -->
     <script defer src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
+
+    <!-- Your Firebase config here -->
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyCKzfeDRs7VSqBrvwEFgP0z-u4pCX_fsYI",
+        authDomain: "dh2642-movie-presenter.firebaseapp.com",
+        projectId: "dh2642-movie-presenter",
+        storageBucket: "dh2642-movie-presenter.appspot.com",
+        messagingSenderId: "914998727447",
+        appId: "1:914998727447:web:b7cc76ffc91d521d8edd52"
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <!-- Include other Firebase features as needed -->
     <script defer src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/10.7.1/firebase-functions-compat.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging-compat.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics-compat.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/10.7.1/firebase-remote-config-compat.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/10.7.1/firebase-performance-compat.js"></script>
-    <!--
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="https://www.gstatic.com/firebasejs/10.7.1/firebase/init.js?useEmulator=true"></script>
+    <!-- Add other Firebase feature scripts as required -->
+
+    <!-- Initialize Firebase features -->
+    <script defer>
+      document.addEventListener('DOMContentLoaded', function () {
+        const loadEl = document.querySelector('#load');
+        try {
+          let app = firebase.app();
+          let features = [
+            'auth',
+            'database',
+            'firestore',
+            'functions',
+            'messaging',
+            'storage',
+            'analytics',
+            'remoteConfig',
+            'performance',
+          ].filter(feature => typeof app[feature] === 'function');
+          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script>
 
     <style media="screen">
         body {
@@ -106,44 +136,6 @@
         <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
     </div>
     <p id="load">Firebase SDK Loading&hellip;</p>
-
-    <script>
-      // Your Firebase config here
-      var firebaseConfig = {
-        apiKey: "AIzaSyCKzfeDRs7VSqBrvwEFgP0z-u4pCX_fsYI",
-        authDomain: "dh2642-movie-presenter.firebaseapp.com",
-        projectId: "dh2642-movie-presenter",
-        storageBucket: "dh2642-movie-presenter.appspot.com",
-        messagingSenderId: "914998727447",
-        appId: "1:914998727447:web:b7cc76ffc91d521d8edd52"
-      };
-
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-
-      document.addEventListener('DOMContentLoaded', function () {
-        const loadEl = document.querySelector('#load');
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth',
-            'database',
-            'firestore',
-            'functions',
-            'messaging',
-            'storage',
-            'analytics',
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-
 </body>
 
 </html>
