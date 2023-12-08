@@ -22,7 +22,7 @@ export default function Search(props) {
         />
       </div>
       <div className="searchResultContainer">
-        <h2>Search Results</h2>
+        <h2>{props.model.searchParams.query ? 'Search Results' : 'Top movies today'}</h2>
         {renderResultsView()}
       </div>
     </div>

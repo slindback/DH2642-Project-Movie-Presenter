@@ -24,7 +24,7 @@ function SearchbarView(props) {
       />
       <button className="searchButton" onClick={handleSearchRequestACB}>
         <img
-          src="img/misc/magnifying-glass-icon.jpg"
+          src="/img/misc/magnifying-glass-icon.jpg"
           alt="Search"
           className="searchButtonIcon"
         />
