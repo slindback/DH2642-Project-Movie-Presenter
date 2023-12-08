@@ -1,4 +1,4 @@
-export default function resolvePromise(promise, promiseState){
+export default function resolvePromise(promise, promiseState) {
     if (!promise) { return; }
   
     promiseState.data = null;

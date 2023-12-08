@@ -6,7 +6,7 @@ import virtualHtml from 'vite-plugin-virtual-html';
 const pages = {
     "index": {
         entry: "/src/vuejs/index.jsx",
-        title: "MoviePlanner",
+        title: "Watch Later",
         body: "<div id='root'></div>"
     }
 }
