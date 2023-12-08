@@ -2,9 +2,15 @@ import "/src/style.css";
 
 export default
 function DetailsView(props) {
-  console.log(">",props.movieDetails.genres);
   return (
     <div className="detailsContainer">
+      <button className="searchButton" onClick={navigateToSearchACB}>
+        <img
+          src="/img/misc/left-arrow-icon.png"
+          alt="Back"
+          className="searchButtonIcon"
+        />
+      </button>
       <div className="titleHeader">
         <div>
           <h1>{props.movieDetails.title || 'Title'}</h1>
@@ -30,4 +36,8 @@ function DetailsView(props) {
       </div>
     </div>
   );
+}
+
+function navigateToSearchACB() {
+  window.location.hash="#/search";
 }
