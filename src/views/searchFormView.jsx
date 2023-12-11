@@ -4,6 +4,11 @@ import "/src/style.css";
 export default
 function SearchbarView(props) {
 
+  const adContext = import.meta.globEager("/img/misc/magnifying-glass-icon.jpg");
+  const source = Object.values(adContext).map((module) => module.default)[0];
+
+  console.log(source);
+
   function handleInputChangeACB(event) {
     props.onInputChange(event.target.value);
   }
@@ -24,7 +29,7 @@ function SearchbarView(props) {
       />
       <button className="searchButton" onClick={handleSearchRequestACB}>
         <img
-          src="/img/misc/magnifying-glass-icon.jpg"
+          src= {source}
           alt="Search"
           className="searchButtonIcon"
         />

@@ -2,11 +2,15 @@ import "/src/style.css";
 
 export default
 function DetailsView(props) {
+  // Change later. Should probably be a function in utils.js
+  const adContext = import.meta.globEager("/img/misc/left-arrow-icon.png");
+  const source = Object.values(adContext).map((module) => module.default)[0];
+
   return (
     <div className="detailsContainer">
       <button className="searchButton" onClick={navigateToSearchACB}>
         <img
-          src="/img/misc/left-arrow-icon.png"
+          src={source}
           alt="Back"
           className="searchButtonIcon"
         />
