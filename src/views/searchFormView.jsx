@@ -4,10 +4,9 @@ import "/src/style.css";
 export default
 function SearchbarView(props) {
 
+  // Change later. Should probably be a function in utils.js
   const adContext = import.meta.globEager("/img/misc/magnifying-glass-icon.jpg");
   const source = Object.values(adContext).map((module) => module.default)[0];
-
-  console.log(source);
 
   function handleInputChangeACB(event) {
     props.onInputChange(event.target.value);
@@ -19,7 +18,7 @@ function SearchbarView(props) {
   }
 
   return (
-    <form onSubmit={handleSearchRequestACB}>
+    <form onSubmit={handleSearchRequestACB} className="searchFormContainer">
       <input
         className="searchFormInput"
         type="text"
