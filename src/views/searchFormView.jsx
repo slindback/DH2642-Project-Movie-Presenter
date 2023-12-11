@@ -19,7 +19,7 @@ function SearchbarView(props) {
   }
 
   return (
-    <form onSubmit={handleSearchRequestACB} className="searchFormContainer">
+    <form onSubmit={handleSearchRequestACB}>
       <input
         className="searchFormInput"
         type="text"
