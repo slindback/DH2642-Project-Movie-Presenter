@@ -1,7 +1,9 @@
 import { createApp, reactive, watch } from "vue";
+
 import { VueRoot, makeRouter } from "/src/vuejs/VueRoot.jsx";
-import { connectToFirebase } from "../firebaseModel";
-import model from "/src/movieModel.js"
+
+import { connectToFirebase } from "/src/firebaseModel";
+import { movieModel as model } from "/src/movieModel.js";
 
 
 // application state
@@ -13,5 +15,5 @@ app.use(makeRouter(reactiveModel));
 app.mount("#root");
 
 // bootstrapping
-connectToFirebase(reactiveModel, watch)
+connectToFirebase(reactiveModel, watch);
 reactiveModel.doSearch({});

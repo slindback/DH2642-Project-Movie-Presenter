@@ -1,24 +1,20 @@
-import DetailsView from "/src/views/detailsView.jsx";
+import { DetailsView } from "/src/views/detailsView.jsx";
 
-export default
-function Details(props) {
-  if (!props.model.currentMoviePromiseState.promise) {
-    return "No data...";
-  }
+import { renderPromiseState } from "/src/utils.jsx";
 
-  if (props.model.currentMoviePromiseState.error) {
-    return props.model.currentMoviePromiseState.error;
-  }
 
-  if (props.model.currentMoviePromiseState.data) {
-    return <DetailsView
-      movieDetails={props.model.currentMoviePromiseState.data}
-    />;
-  }
+export function Details(props) {
 
-  return (
-    <img className="loadingImage"
-      src = "https://www.elevateyourwellness.org/Content/image/loader2.gif"
-    />
-  );
-}
+    return renderPromiseState(
+        props.model.currentMoviePromiseState,
+        detailsViewRenderCB,
+    );
+
+    function detailsViewRenderCB() {
+        return (
+          <DetailsView
+            movieDetails = {props.model.currentMoviePromiseState.data}
+          />
+        );
+    };
+};

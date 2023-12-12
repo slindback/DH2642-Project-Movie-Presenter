@@ -5,7 +5,7 @@ import {
     SEARCH_SUFFIX,
     FIND,
     TRENDING,
-} from '/src/tmdbConfig.js'
+} from '/src/tmdbConfig.js';
 
 
 export function getMovieById(movieId) {
@@ -14,7 +14,7 @@ export function getMovieById(movieId) {
     return fetch(URL, API_OPTIONS)
       .then(responseToJsonACB)
       .then(getDataCB);
-}
+};
 
 export function getMovieByQuery(query) {
     const URL = BASE_URL + (query ? (SEARCH_PREFIX + query + SEARCH_SUFFIX) : TRENDING) 
@@ -22,16 +22,16 @@ export function getMovieByQuery(query) {
     return fetch(URL, API_OPTIONS)
       .then(responseToJsonACB)
       .then(keepJsonResultsCB);
-}
+};
 
 function responseToJsonACB(resp) {
     return resp.json();
-}
+};
 
 function keepJsonResultsCB(json) {
     return json.results || [];
-}
+};
 
 function getDataCB(data) {
     return data || [];
-}
+};

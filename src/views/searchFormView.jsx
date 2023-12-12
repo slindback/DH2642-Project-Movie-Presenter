@@ -1,38 +1,37 @@
 import "/src/style.css";
 
 
-export default
-function SearchbarView(props) {
+export function SearchFormView(props) {
 
-  // Change later. Should probably be a function in utils.js
-  const adContext = import.meta.globEager("/img/misc/magnifying-glass-icon.jpg");
-  const source = Object.values(adContext).map((module) => module.default)[0];
+    // TODO: change later - should probably be a function in utils.jsx
+    const adContext = import.meta.globEager("/img/misc/magnifying-glass-icon.jpg");
+    const adSource = Object.values(adContext).map((module) => module.default)[0];
 
-  function handleInputUpdateACB(event) {
-    props.onInputUpdate(event.target.value);
-  }
-
-  function handleSearchRequestACB(event) {
-    event.preventDefault();
-    props.onSearchRequest();
-  }
-
-  return (
-    <form onSubmit={handleSearchRequestACB} className="searchFormContainer">
-      <input
-        className="searchFormInput"
-        type="text"
-        placeholder="Search..."
-        value={props.text || ""}
-        onChange={handleInputUpdateACB}
-      />
-      <button className="searchButton" onClick={handleSearchRequestACB}>
-        <img
-          src= {source}
-          alt="Search"
-          className="searchButtonIcon"
+    return (
+      <form onSubmit={handleSearchRequestACB} className="searchFormContainer">
+        <input
+          className = "searchFormInput"
+          type = "text"
+          placeholder = "Search..."
+          value = {props.text || ""}
+          onChange = {handleInputUpdateACB}
         />
-      </button>
-    </form>
-  );
-}
+        <button className="searchFormButton" onClick={handleSearchRequestACB}>
+          <img
+            src = {adSource}
+            alt = "Search"
+            className = "searchFormButtonIcon"
+          />
+        </button>
+      </form>
+    );
+
+    function handleInputUpdateACB(event) {
+        props.onInputUpdate(event.target.value);
+    };
+
+    function handleSearchRequestACB(event) {
+        event.preventDefault();
+        props.onSearchRequest();
+    };
+};

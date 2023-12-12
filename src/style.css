@@ -2,6 +2,7 @@
   display: flex;
 }
 
+
 .sidebarContainer {
   flex-basis: 200px;
   flex-grow: 0;
@@ -9,11 +10,13 @@
   height: 98vh;
 }
 
+
 .mainContainer {
   padding-left: 0.5%;
   padding-right: 0.5%;
   flex-grow: 1;
 }
+
 
 .searchContainer {
 
@@ -34,14 +37,14 @@
   width: 300px;
 }
 
-.searchButton {
+.searchFormButton {
   cursor: pointer;
   margin-left: 5px;
   background: transparent;
   border: none;
 }
 
-.searchButtonIcon {
+.searchFormButtonIcon {
   width: 15px;
   height: 15px;
 }
@@ -83,40 +86,49 @@
   font-size: 16px;
 }
 
+
 .detailsContainer {
   text-align: left;
   padding: 20px;
 }
 
-.titleHeader {
+.detailsHeader {
   display: flex;
   justify-content: space-between;
 }
 
-.rating {
+.detailsHeaderTitle {
+
+}
+
+.detailsHeaderRating {
   text-align: right;
 }
 
-.year {
+.detailsYear {
   margin-top: 10px;
 }
 
-.pictures {
+.detailsImages {
   margin-top: 20px;
   display: flex;
-  justify-content: start; /* or justify-content: flex-start; */
-  height: 300px; /* Set a specific height for the container */
+  justify-content: start;
+  height: 300px;
 }
 
-.moviePoster,
-.movieBackdrop {
-  height: 100%; /* Set a fixed height to maintain aspect ratio */
-  object-fit: cover; /* Ensure the image covers the entire container */
+.detailsImagesPoster {
+
 }
 
-.genres {
+.detailsImagessBackdrop {
+  height: 100%;
+  object-fit: cover;
+}
+
+.detailsGenres {
   margin-top: 20px;
 }
+
 
 .adsContainer {
   flex-basis: 200px;
@@ -125,11 +137,28 @@
   height: 98vh;
 }
 
+.detailsDescription {
+
+}
+
 .adImage {
   width: 100%;
   height: 100%;
 }
 
+
 .loadingImage {
 
+}
+
+.returnButton {
+  cursor: pointer;
+  margin-left: 5px;
+  background: transparent;
+  border: none;
+}
+
+.returnButtonIcon {
+  width: 15px;
+  height: 15px;
 }

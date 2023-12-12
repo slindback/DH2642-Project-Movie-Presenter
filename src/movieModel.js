@@ -1,7 +1,8 @@
 import { getMovieByQuery, getMovieById } from "/src/movieSource";
-import resolvePromise from "/src/utils";
+import { resolvePromise } from "/src/utils";
 
-export default {
+
+export let movieModel = {
     movies: [],
 
     currentMovie: null,
@@ -31,11 +32,11 @@ export default {
                 this.currentMovie = movieId;
                 const promise = getMovieById(movieId);
                 resolvePromise(promise, this.currentMoviePromiseState);
-            }
+            };
         } else {
             this.currentDish = null;
             this.currentDishPromiseState = {};
-        }
+        };
     },
 
     setSearchQuery(_query){
