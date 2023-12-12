@@ -8,7 +8,7 @@ export default function Search(props) {
     props.model.doSearch(props.model.searchParams);
   };
 
-  function handleInputChanegACB(query) {
+  function handleInputUpdateACB(query) {
     props.model.setSearchQuery(query);
   };
 
@@ -18,7 +18,7 @@ export default function Search(props) {
         <SearchFormView
           text = {props.model.searchParams.query}
           onSearchRequest = {handleSearchRequestACB}
-          onInputChange = {handleInputChanegACB}
+          onInputUpdate = {handleInputUpdateACB}
         />
       </div>
       <div className="searchResultContainer">

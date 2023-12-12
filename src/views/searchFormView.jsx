@@ -8,8 +8,8 @@ function SearchbarView(props) {
   const adContext = import.meta.globEager("/img/misc/magnifying-glass-icon.jpg");
   const source = Object.values(adContext).map((module) => module.default)[0];
 
-  function handleInputChangeACB(event) {
-    props.onInputChange(event.target.value);
+  function handleInputUpdateACB(event) {
+    props.onInputUpdate(event.target.value);
   }
 
   function handleSearchRequestACB(event) {
@@ -24,7 +24,7 @@ function SearchbarView(props) {
         type="text"
         placeholder="Search..."
         value={props.text || ""}
-        onChange={handleInputChangeACB}
+        onChange={handleInputUpdateACB}
       />
       <button className="searchButton" onClick={handleSearchRequestACB}>
         <img
