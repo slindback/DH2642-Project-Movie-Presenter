@@ -1,55 +1,187 @@
-.flexParent {
-  display: flex;
+/************
+** GENERAL **
+************/
+
+body {
+  background-color: #222222;
+  color: #DDDDDD;
+
+  margin: 0px;
 }
 
-
-.sidebarContainer {
-  flex-basis: 200px;
-  flex-grow: 0;
-  flex-shrink: 0;
-  height: 98vh;
+.root {
+  
 }
-
 
 .mainContainer {
-  padding-left: 0.5%;
-  padding-right: 0.5%;
-  flex-grow: 1;
+  display: flex;
+
+  gap: 10px;
+
+  margin: 10px;
+  margin-top: 50px;
 }
 
+
+
+/***********
+** TOPNAV **
+***********/
+
+.topnavContainer {
+  background-color: #445566;
+  
+  overflow: hidden;
+  z-index: 9999999;
+  
+  position: fixed;
+  top: 0px;
+
+  width: 100%;
+  height: 40px;
+}
+
+.topnavSubcontainer {
+  display: flex;
+
+  gap: 24px;
+  padding-top: 8px;
+}
+
+.topnavSubcontainerLeft {
+  padding-left: 10px;
+  float: left;
+}
+
+.topnavSubcontainerRight {
+  padding-right: 10px;
+  float: right;
+}
+
+.topnavLink {
+  text-decoration: none;
+
+  font-size: 20px;
+  color: #DDDDDD;
+}
+
+.topnavLink:hover {
+  color: #FFFFFF;
+}
+
+
+
+/************
+** SIDEBAR **
+************/
+
+.sidebarContainer {
+  background-color: #444444;
+
+  flex-basis: 256px;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  height: calc(100vh - 60px);
+}
+
+
+
+/***********
+** CENTER **
+************/
+
+.centerContainer {
+  background-color: #444444;
+
+  flex-grow: 1;
+  
+  max-height: calc(100vh - 60px);
+  overflow-y: scroll;
+}
+
+.centerContainer::-webkit-scrollbar {
+  width: 0px;
+}
+
+
+
+/********************
+** CENTER > SEARCH **
+********************/
 
 .searchContainer {
-
+  
 }
 
+
+
+/***************************
+** CENTER > SEARCH > FORM **
+***************************/
+
 .searchFormContainer {
-  display: flex;
-  align-items: center;
+  width: 100%;
+  height: 32px;
 }
 
 .searchFormInput {
-  text-align: left;
+  background-color: #555555;
+
   height: 100%;
-  width: 100%;
-  border: 1px solid;
-  border-radius: 5px;
-  padding: 5px;
-  width: 300px;
+  width: calc(100% - 4px); /* not sure where the 4px comes from, but this removes it */
+
+  border: none;
+  outline: none;
+  
+  text-align: center;
+  font-size: 16px;
+  color: #DDDDDD;
+}
+
+.searchFormInput:hover {
+  background-color: #5D5D5D;
+}
+
+.searchFormInput:focus {
+  background-color: #666666;
+}
+
+.searchFormInput::placeholder {
+  color: #BBBBBB;
 }
 
 .searchFormButton {
-  cursor: pointer;
-  margin-left: 5px;
   background: transparent;
+
+  position: relative;
+  float: right;
+  top: -28px;
+
+  cursor: pointer;
+
   border: none;
 }
 
 .searchFormButtonIcon {
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
 }
 
+
+
+/*****************************
+** CENTER > SEARCH > RESULT **
+*****************************/
+
 .searchResultContainer {
+
+}
+
+.searchResultText {
+  /* for some reason this text is not actually being centered properly */
+  padding-left: 40px;
+
   text-align: center;
 }
 
@@ -57,39 +189,65 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+
 }
 
 .searchResultCard {
+  background-color: #666666;
+
   width: 300px;
   height: 500px;
+  
   margin-bottom: 30px;
+
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+  box-shadow: 0px 4px 8px #00000022;
 }
 
 .searchResultCard:hover {
   transform: scale(1.05);
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+
+  box-shadow: 0px 8px 16px #00000044;
 }
 
 .searchResultCard:active {
   transform: scale(0.95);
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+
+  box-shadow: 0px 2px 4px #00000022;
 }
 
-.searchResultImage {
+.searchResultCardImage {
   width: 100%;
   height: calc(100% - 50px);
 }
 
-.searchResultText {
+.searchResultCardText {
+  /* used to center text vertically, there might be a better way */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  height: 40px;
+  width: 80%;
+
+  padding-left: 10%;
+  padding-right: 10%;
+
+  text-align: center;
   font-size: 16px;
 }
 
 
+
+/********************
+** CENTER > DETAILS**
+********************/
+
 .detailsContainer {
   text-align: left;
-  padding: 20px;
+
+  height: calc(100vh - 60px);
 }
 
 .detailsHeader {
@@ -110,18 +268,19 @@
 }
 
 .detailsImages {
-  margin-top: 20px;
+  height: 300px;
+
   display: flex;
   justify-content: start;
-  height: 300px;
 }
 
 .detailsImagesPoster {
 
 }
 
-.detailsImagessBackdrop {
+.detailsImagesBackdrop {
   height: 100%;
+
   object-fit: cover;
 }
 
@@ -129,36 +288,50 @@
   margin-top: 20px;
 }
 
-
-.adsContainer {
-  flex-basis: 200px;
-  flex-grow: 0;
-  flex-shrink: 0;
-  height: 98vh;
-}
-
 .detailsDescription {
 
 }
 
-.adImage {
+
+
+/********
+** ADS **
+********/
+
+.adsContainer {
+  background-color: #444444;
+  
+  flex-basis: 256px;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  height: calc(100vh - 60px);
+}
+
+.adsImage {
   width: 100%;
   height: 100%;
 }
 
+
+
+/**********
+** OTHER **
+**********/
 
 .loadingImage {
 
 }
 
 .returnButton {
-  cursor: pointer;
-  margin-left: 5px;
   background: transparent;
+
+  cursor: pointer;
+  
   border: none;
 }
 
 .returnButtonIcon {
-  width: 15px;
-  height: 15px;
+  width: 24px;
+  height: 24px;
 }

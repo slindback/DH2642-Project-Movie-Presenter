@@ -12,10 +12,10 @@ export function SearchResultView(props) {
     function showResultCB(result) {
         return (
           <span className="searchResultCard" onClick={handleSelectResultACB} key={result.title}>
-            <img className="searchResultImage"
+            <img className="searchResultCardImage"
               src = {"https://image.tmdb.org/t/p/w300" + result.poster_path}
             />
-            <div className="searchResultText">
+            <div className="searchResultCardText">
               {result.title}
             </div>
           </span>

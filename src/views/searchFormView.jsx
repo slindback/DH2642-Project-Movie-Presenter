@@ -4,7 +4,7 @@ import "/src/style.css";
 export function SearchFormView(props) {
 
     // TODO: change later - should probably be a function in utils.jsx
-    const adContext = import.meta.globEager("/img/misc/magnifying-glass-icon.jpg");
+    const adContext = import.meta.globEager("/img/misc/magnifying-glass-icon.png");
     const adSource = Object.values(adContext).map((module) => module.default)[0];
 
     return (
@@ -12,7 +12,7 @@ export function SearchFormView(props) {
         <input
           className = "searchFormInput"
           type = "text"
-          placeholder = "Search..."
+          placeholder = "Search"
           value = {props.text || ""}
           onChange = {handleInputUpdateACB}
         />

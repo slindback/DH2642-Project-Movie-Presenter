@@ -43,7 +43,7 @@ export const AdsView = {
 
   render() {
     return (
-      <img className="adImage"
+      <img className="adsImage"
         src = {this.currentAdSource}
       />
     );

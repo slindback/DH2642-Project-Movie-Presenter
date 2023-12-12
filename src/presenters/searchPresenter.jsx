@@ -16,7 +16,9 @@ export function Search(props) {
           />
         </div>
         <div className="searchResultContainer">
-          <h2>{props.model.searchParams.query ? "Search Results" : "Top movies today"}</h2>
+          <div className="searchResultText">
+            <h2>{props.model.searchParams.query ? "Search Results" : "Top Movies Today"}</h2>
+          </div>
           {renderResultsViewCB()}
         </div>
       </div>
