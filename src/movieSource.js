@@ -9,7 +9,7 @@ import {
 } from '/src/tmdbConfig.js'
 
 
-export function getMovieByID(movieId) {
+export function getMovieById(movieId) {
     const URL = `${BASE_URL}movie/${movieId}`;
 
     return fetch(URL, API_OPTIONS)

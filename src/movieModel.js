@@ -1,4 +1,4 @@
-import { getMovieByQuery, getMovieByID } from "/src/movieSource";
+import { getMovieByQuery, getMovieById } from "/src/movieSource";
 import resolvePromise from "/src/utils";
 
 export default {
@@ -15,21 +15,21 @@ export default {
     },
 
     removeMovie(movieToRemove) {
-        this.removeMovieByID(movieToRemove.id);
+        this.removeMovieById(movieToRemove.id);
     },
 
-    removeMovieByID(movieIDToRemove) {
+    removeMovieById(movieIdToRemove) {
         function shouldWeKeepMovieCB(movie) {
-            return movie.id !== movieIDToRemove;
+            return movie.id !== movieIdToRemove;
         }
         this.movies = this.movies.filter(shouldWeKeepMovieCB);
     },
 
-    setCurrentMovie(movieID) {
-        if (movieID) {
-            if (this.currentMovie !== movieID) {
-                this.currentMovie = movieID;
-                const promise = getMovieByID(movieID);
+    setCurrentMovie(movieId) {
+        if (movieId) {
+            if (this.currentMovie !== movieId) {
+                this.currentMovie = movieId;
+                const promise = getMovieById(movieId);
                 resolvePromise(promise, this.currentMoviePromiseState);
             }
         } else {
