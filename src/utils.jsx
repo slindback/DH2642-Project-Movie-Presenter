@@ -36,8 +36,10 @@ export function renderPromiseState(promiseState, renderCB) {
     };
   
     return (
-      <img className="loadingImage"
-        src = "https://www.elevateyourwellness.org/Content/image/loader2.gif"
-      />
+      <div className="loadingContainer">
+        <img className="loadingImage"
+          src = "https://www.elevateyourwellness.org/Content/image/loader2.gif"
+        />
+      </div>
     );
 };

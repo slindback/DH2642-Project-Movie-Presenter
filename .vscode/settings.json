@@ -1,6 +1,6 @@
 {
     // internal
-    "explorer.excludeGitIgnore": true,
+    "explorer.excludeGitIgnore": false,
 
     "files.exclude": {
         "**/.git": true,

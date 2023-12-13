@@ -2,7 +2,7 @@ import { getMovieByQuery, getMovieById } from "/src/movieSource";
 import { resolvePromise } from "/src/utils";
 
 
-export let movieModel = {
+export default {
     movies: [],
 
     currentMovie: null,
@@ -34,8 +34,8 @@ export let movieModel = {
                 resolvePromise(promise, this.currentMoviePromiseState);
             };
         } else {
-            this.currentDish = null;
-            this.currentDishPromiseState = {};
+            this.currentMovie = null;
+            this.currentMoviePromiseState = {};
         };
     },
 

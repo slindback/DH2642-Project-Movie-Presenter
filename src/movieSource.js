@@ -9,17 +9,14 @@ import {
 
 
 export function getMoviesByIdArray(movieIdArray) {
-    return new Promise((resolve) => {
-        resolve(movieIdArray.map(getMovieById));
-    });
+    return Promise.all(movieIdArray.map(getMovieById))
 }
 
 export function getMovieById(movieId) {
     const URL = BASE_URL + FIND + movieId;
 
     return fetch(URL, API_OPTIONS)
-      .then(responseToJsonACB)
-      .then(getDataCB);
+      .then(responseToJsonACB);
 };
 
 export function getMovieByQuery(query) {
@@ -36,8 +33,4 @@ function responseToJsonACB(resp) {
 
 function keepJsonResultsCB(json) {
     return json.results || [];
-};
-
-function getDataCB(data) {
-    return data || [];
 };

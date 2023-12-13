@@ -25,7 +25,7 @@ export function VueRoot(props) {
           </div>
           
           <div className="adsContainer">
-            <Ads model={props.model}/>
+            <Ads/>
           </div>
         </div>
       </div>
@@ -37,13 +37,13 @@ export function makeRouter(model) {
       history: createWebHashHistory(),
       routes: [{
         path: "/",
-        component: <Search model={model}></Search>
+        component: <Search model={model}/>
       },{
         path: "/search",
-        component: <Search model={model}></Search>
+        component: <Search model={model}/>
       },{
         path: "/details",
-        component: <Details model={model}></Details>
+        component: <Details model={model}/>
       }],
     });
 };

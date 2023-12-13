@@ -28,6 +28,7 @@ function modelToPersistence(model) {
 };
 
 function persistenceToModel(data, model) {
+
     function saveMoviesToModelACB(movies) {
         model.movies = movies;
     };
@@ -44,8 +45,7 @@ function persistenceToModel(data, model) {
 
     // update model
     model.setCurrentMovie(currentMovie);
-    return getMoviesByIdArray(movies)
-      .then(saveMoviesToModelACB);
+    return getMoviesByIdArray(movies).then(saveMoviesToModelACB);
 };
 
 function saveToFirebase(model) {
@@ -55,6 +55,7 @@ function saveToFirebase(model) {
 };
 
 function readFromFirebase(model) {
+
     function getFirebaseSnapshotAsJsonACB(snapshot) {
         return persistenceToModel(snapshot.val(), model);
     };
@@ -64,13 +65,13 @@ function readFromFirebase(model) {
     };
 
     model.ready = false;
-
     get(ref(db, PATH + "/persistence"))
       .then(getFirebaseSnapshotAsJsonACB)
       .then(setModelReadyCB);
 };
 
 export function connectToFirebase(model, watchFunction){
+
     function getModelAsJsonACB() {
         return modelToPersistence(model);
     };
