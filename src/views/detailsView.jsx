@@ -2,11 +2,7 @@ import "/src/style.css";
 
 
 export function DetailsView(props) {
-
-    // TODO: change later - should probably be a function in utils.jsx
-    const adContext = import.meta.globEager("/img/misc/left-arrow-icon.png");
-    const adSource = Object.values(adContext).map((module) => module.default)[0];
-
+  
     return (
       <div className="detailsContainer">
         <div className="detailsHeader">

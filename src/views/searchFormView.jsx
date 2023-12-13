@@ -4,8 +4,8 @@ import "/src/style.css";
 export function SearchFormView(props) {
 
     // TODO: change later - should probably be a function in utils.jsx
-    const adContext = import.meta.globEager("/img/misc/magnifying-glass-icon.png");
-    const adSource = Object.values(adContext).map((module) => module.default)[0];
+    const imgContext = import.meta.globEager("/img/misc/magnifying-glass-icon.png");
+    const imgSource = Object.values(imgContext).map((module) => module.default)[0];
 
     return (
       <form onSubmit={handleSearchRequestACB} className="searchFormContainer">
@@ -18,7 +18,7 @@ export function SearchFormView(props) {
         />
         <button className="searchFormButton" onClick={handleSearchRequestACB}>
           <img
-            src = {adSource}
+            src = {imgSource}
             alt = "Search"
             className = "searchFormButtonIcon"
           />
