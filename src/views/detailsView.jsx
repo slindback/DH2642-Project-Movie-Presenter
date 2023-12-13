@@ -5,7 +5,7 @@ export function DetailsView(props) {
 
     return (
       <div className="detailsContainer">
-        
+
         <img className="detailsBackground"
           src = {"https://image.tmdb.org/t/p/original" + props.movies.backdrop_path}
           alt = {`${props.movies.title} backdrop`}
@@ -29,9 +29,12 @@ export function DetailsView(props) {
             </div>
 
             <div className="detailsInformationGenres">
-              <p>{props.movies.genres.map(genre => genre.name).join(', ') || 'Genres not available'}</p>
+              {props.movies.genres.map((genre, index) => (
+                <div key={index} className="genreBubble">
+                  <p>{genre.name}</p>
+                </div>
+              ))}
             </div>
-
             <div className="detailsInformationDescription">
               <p>{props.movies.overview || 'Movie description not available'}</p>
             </div>
@@ -43,7 +46,7 @@ export function DetailsView(props) {
               alt = {`${props.movies.title} poster`}
             />
             <button className="detailsPosterButton" onClick={handleAddOrRemoveMovieACB}>
-              {(props.isInWatchLater() ? "Remove from" : "Add to") + " Watch Later"}
+              {(props.isInWatchLater() ? "Remove from" : "Add to") + " Watchlist"}
             </button>
           </div>
         </div>

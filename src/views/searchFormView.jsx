@@ -4,8 +4,8 @@ import "/src/style.css";
 export function SearchFormView(props) {
 
     // TODO: change later - should probably be a function in utils.jsx
-    const imgContext = import.meta.globEager("/img/misc/magnifying-glass-icon.png");
-    const imgSource = Object.values(imgContext).map((module) => module.default)[0];
+    const imgContext = import.meta.globEager("/img/misc/*.png");
+    const imgSource = Object.values(imgContext).map((module) => module.default);
 
     return (
       <form onSubmit={handleSearchRequestACB} className="searchFormContainer">
@@ -18,7 +18,7 @@ export function SearchFormView(props) {
         />
         <button className="searchFormButton" onClick={handleSearchRequestACB}>
           <img
-            src = {imgSource}
+            src = {imgSource[1]}
             alt = "Search"
             className = "searchFormButtonIcon"
           />
@@ -33,5 +33,9 @@ export function SearchFormView(props) {
     function handleSearchRequestACB(event) {
         event.preventDefault();
         props.onSearchRequest();
+    };
+
+    function openFilterMenuACB(event) {
+        console.log("Not yet implemented") // TODO
     };
 };

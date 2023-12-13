@@ -2,7 +2,7 @@ import "/src/style.css";
 
 
 export function TopnavView(props) {
-  
+
     return (
       <div>
         <div className="topnavSubcontainer topnavSubcontainerLeft">
