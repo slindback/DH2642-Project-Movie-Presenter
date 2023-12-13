@@ -24,8 +24,6 @@ The user will be able to search for movies (data from IMDb) and filter on genre/
 
 
 ## TODO:
-- replace basic CSS with a fancier style (e.g. bootstrap)
-  - additionally, make it so the ads don't scroll
 - implement the sidebar
   - a "watch later" list of movies selected from the /search
 - improve /details presentation
@@ -34,25 +32,31 @@ The user will be able to search for movies (data from IMDb) and filter on genre/
 
 ## Changelog
 
-### Dec 8, 2023
+### 2023-12-12
+- Revamped the CSS
+  - Included are minor changes to view structure to better fit the CSS
+- Added a basic topnav
+- Standardized the code strucutre
+
+### 2023-12-08
 - Added back button in details view and dynamically changing title in search result view (“Rearch results” if search has been made, else “Top trending movies today”)
 
-### Dec 7, 2023
+### 2023-12-07
 - Firebase setup and app deployment done.
 
-### Dec 6, 2023
+### 2023-12-06
 - Css cleanup, added hover effect on search result “cards”.
 - Added a basic details view displaying information about a movie.
 
-### Dec 5, 2023
+### 2023-12-05
 - Added search function in the search form view to display results in search result view. Also added suspense (loading gif) for searches.
 
-### Dec 4, 2023
+### 2023-12-04
 - Added trending movies to the search results view when no search has been made yet.
 
-### Dec 3, 2023
+### 2023-12-03
 - Added basic api code (Changed from imdb to tmdb because of long processing time for API-key request).
 
-### Nov 29, 2023
+### 2023-11-29
 - Added all necessary files and code skeletons (model, views, presenters, etc…).
 - Fixed some basic styling and made a simple render of the empty views implemented.

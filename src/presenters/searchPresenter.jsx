@@ -1,60 +1,56 @@
-import SearchFormView from "/src/views/searchFormView.jsx";
-import SearchResultView from "/src/views/searchResultView.jsx";
+import { SearchFormView } from "/src/views/searchFormView.jsx";
+import { SearchResultView } from "/src/views/searchResultView.jsx";
+
+import { renderPromiseState } from "/src/utils";
 
 
-export default function Search(props) {
-
-  function handleSearchRequestACB() {
-    props.model.doSearch(props.model.searchParams);
-  };
-
-  function handleInputChanegACB(query) {
-    props.model.setSearchQuery(query);
-  };
-
-  return (
-    <div className="searchContainer">
-      <div className="searchFormContainer">
-        <SearchFormView
-          text = {props.model.searchParams.query}
-          onSearchRequest = {handleSearchRequestACB}
-          onInputChange = {handleInputChanegACB}
-        />
-      </div>
-      <div className="searchResultContainer">
-        <h2>{props.model.searchParams.query ? 'Search Results' : 'Top movies today'}</h2>
-        {renderResultsView()}
-      </div>
-    </div>
-  );
-
-  function renderResultsView() {
-
-    if (!props.model.searchResultPromiseState.promise) {
-      return "No data...";
-    }
-
-    if (props.model.searchResultPromiseState.error) {
-      return props.model.searchResultPromiseState.error;
-    }
-
-    if (props.model.searchResultPromiseState.data) {
-
-      function handleSelectResultACB(movie) {
-        props.model.setCurrentMovie(movie.id)
-      };
-      return (
-        <SearchResultView
-          searchResults = {props.model.searchResultPromiseState.data}
-          onSelectResult = {handleSelectResultACB}
-        />
-      );
-    }
+export function Search(props) {
 
     return (
-      <img className="loadingImage"
-        src = "https://www.elevateyourwellness.org/Content/image/loader2.gif"
-      />
+      <div className="searchContainer">
+        <div className="searchFormContainer">
+          <SearchFormView
+            text = {props.model.searchParams.query}
+            onSearchRequest = {handleSearchRequestACB}
+            onInputUpdate = {handleInputUpdateACB}
+          />
+        </div>
+        <div className="searchResultContainer">
+          <div className="searchResultText">
+            <h2>{props.model.searchParams.query ? "Search Results" : "Top Movies Today"}</h2>
+          </div>
+          {renderResultsViewCB()}
+        </div>
+      </div>
     );
-  }
-}
+
+    function renderResultsViewCB() {
+
+        function searchResultViewRenderCB() {
+
+            function handleSelectResultACB(movie) {
+                props.model.setCurrentMovie(movie.id);
+            };
+
+            return (
+              <SearchResultView
+                searchResults = {props.model.searchResultPromiseState.data}
+                onSelectResult = {handleSelectResultACB}
+              />
+            );
+        };
+
+        return renderPromiseState(
+            props.model.searchResultPromiseState,
+            searchResultViewRenderCB,
+        );
+    };
+
+    function handleSearchRequestACB() {
+        props.model.doSearch(props.model.searchParams);
+    };
+
+    function handleInputUpdateACB(query) {
+        props.model.setSearchQuery(query);
+    };
+};

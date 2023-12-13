@@ -1,52 +1,229 @@
-.flexParent {
-  display: flex;
+/************
+** GENERAL **
+************/
+
+body {
+  background-color: #222222;
+  color: #DDDDDD;
+
+  margin: 0px;
 }
 
-.sidebarContainer {
-  flex-basis: 200px;
-  flex-grow: 0;
-  flex-shrink: 0;
-  height: 98vh;
+.root {
+  
 }
 
 .mainContainer {
-  padding-left: 0.5%;
-  padding-right: 0.5%;
-  flex-grow: 1;
+  display: flex;
+
+  gap: 10px;
+
+  margin: 10px;
+  margin-top: 50px;
 }
+
+
+
+/***********
+** TOPNAV **
+***********/
+
+.topnavContainer {
+  background-color: #445566;
+  
+  overflow: hidden;
+  z-index: 9999999;
+  
+  position: fixed;
+  top: 0px;
+
+  width: 100%;
+  height: 40px;
+}
+
+.topnavSubcontainer {
+  display: flex;
+
+  gap: 24px;
+  padding-top: 8px;
+}
+
+.topnavSubcontainerLeft {
+  padding-left: 10px;
+  float: left;
+}
+
+.topnavSubcontainerRight {
+  padding-right: 10px;
+  float: right;
+}
+
+.topnavLink {
+  text-decoration: none;
+
+  font-size: 20px;
+  color: #DDDDDD;
+}
+
+.topnavLink:hover {
+  transform: scale(1.05);
+
+  box-shadow: 0px 8px 16px #00000044;
+
+  color: #FFFFFF;
+}
+
+
+
+/************
+** SIDEBAR **
+************/
+
+.sidebarContainer {
+  background-color: #444444;
+
+  flex-basis: 256px;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  height: calc(100vh - 60px);
+
+  text-align: center;
+}
+
+.sidebarText {
+  text-align: center;
+}
+
+.sidebarTable {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sidebarTableRow {
+  /* used to center text vertically, there might be a better way */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background-color: #555555;
+
+  width: calc(100% - 20px);
+  height: 50px;
+
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.sidebarTableRow:hover {
+  transform: scale(1.05);
+
+  box-shadow: 0px 8px 16px #00000044;
+
+  cursor: pointer;
+
+  background-color: #5D5D5D;
+}
+
+
+
+/***********
+** CENTER **
+************/
+
+.centerContainer {
+  background-color: #444444;
+
+  flex-grow: 1;
+  
+  max-height: calc(100vh - 60px);
+  overflow-y: scroll;
+}
+
+.centerContainer::-webkit-scrollbar {
+  width: 0px;
+}
+
+
+
+/********************
+** CENTER > SEARCH **
+********************/
 
 .searchContainer {
-
+  
 }
 
+
+
+/***************************
+** CENTER > SEARCH > FORM **
+***************************/
+
 .searchFormContainer {
-  display: flex;
-  align-items: center;
+  width: 100%;
+  height: 32px;
 }
 
 .searchFormInput {
-  text-align: left;
+  background-color: #555555;
+
   height: 100%;
-  width: 100%;
-  border: 1px solid;
-  border-radius: 5px;
-  padding: 5px;
-  width: 300px;
+  width: calc(100% - 4px); /* not sure where the 4px comes from, but this removes it */
+
+  border: none;
+  outline: none;
+  
+  text-align: center;
+  font-size: 16px;
+  color: #DDDDDD;
 }
 
-.searchButton {
-  cursor: pointer;
-  margin-left: 5px;
+.searchFormInput:hover {
+  background-color: #5D5D5D;
+}
+
+.searchFormInput:focus {
+  background-color: #666666;
+}
+
+.searchFormInput::placeholder {
+  color: #BBBBBB;
+}
+
+.searchFormButton {
   background: transparent;
+
+  position: relative;
+  float: right;
+  top: -28px;
+
+  cursor: pointer;
+
   border: none;
 }
 
-.searchButtonIcon {
-  width: 15px;
-  height: 15px;
+.searchFormButtonIcon {
+  width: 20px;
+  height: 20px;
 }
 
+
+
+/*****************************
+** CENTER > SEARCH > RESULT **
+*****************************/
+
 .searchResultContainer {
+
+}
+
+.searchResultText {
+  /* for some reason this text is not actually being centered properly */
+  padding-left: 40px;
+
   text-align: center;
 }
 
@@ -54,78 +231,184 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+
 }
 
 .searchResultCard {
+  background-color: #445566;
+
   width: 300px;
   height: 500px;
+  
   margin-bottom: 30px;
+
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+  box-shadow: 0px 4px 8px #00000022;
 }
 
 .searchResultCard:hover {
   transform: scale(1.05);
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+
+  box-shadow: 0px 8px 16px #00000044;
+
+  cursor: pointer;
 }
 
-.searchResultCard:active {
-  transform: scale(0.95);
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.searchResultImage {
+.searchResultCardImage {
   width: 100%;
   height: calc(100% - 50px);
 }
 
-.searchResultText {
+.searchResultCardText {
+  /* used to center text vertically, there might be a better way */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  height: 40px;
+  width: 80%;
+
+  padding-left: 10%;
+  padding-right: 10%;
+
+  text-align: center;
   font-size: 16px;
 }
 
+
+
+/*********************
+** CENTER > DETAILS **
+*********************/
+
 .detailsContainer {
-  text-align: left;
-  padding: 20px;
+  display: grid;
+
+  height: calc(100vh - 60px);
 }
 
-.titleHeader {
+.detailsBackground {
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 1;
+
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+
+  filter: brightness(50%);
+}
+
+.detailsContent {
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 2;
+
   display: flex;
-  justify-content: space-between;
 }
 
-.rating {
-  text-align: right;
+.detailsInformation {
+  width: 60%;
 }
 
-.year {
-  margin-top: 10px;
+.detailsInformationTitle {
+
 }
 
-.pictures {
-  margin-top: 20px;
+.detailsInformationRating {
+
+}
+
+.detailsInformationYear {
+
+}
+
+.detailsInformationGenres {
+
+}
+
+.detailsInformationDescription {
+
+}
+
+.detailsPoster {
   display: flex;
-  justify-content: start; /* or justify-content: flex-start; */
-  height: 300px; /* Set a specific height for the container */
+  flex-direction: column;
+  
+  justify-content: center;
+  align-items: center;
+
+  width: 40%;
 }
 
-.moviePoster,
-.movieBackdrop {
-  height: 100%; /* Set a fixed height to maintain aspect ratio */
-  object-fit: cover; /* Ensure the image covers the entire container */
+.detailsPosterImage {
+  height: 450px;
+  width: 300px;
+
+  padding-bottom: 10px;
 }
 
-.genres {
-  margin-top: 20px;
+.detailsPosterButton {
+  background: #445566;
+
+  width: 300px;
+  height: 40px;
+
+  cursor: pointer;
+
+  border: none;
+
+  font-size: 20px;
+  color: #DDDDDD;
 }
+
+.detailsPosterButton:hover {
+  transform: scale(1.05);
+
+  box-shadow: 0px 8px 16px #00000044;
+
+  background: #556677;
+}
+
+
+
+/********
+** ADS **
+********/
 
 .adsContainer {
-  flex-basis: 200px;
+  background-color: #444444;
+  
+  flex-basis: 256px;
   flex-grow: 0;
   flex-shrink: 0;
-  height: 98vh;
+
+  height: calc(100vh - 60px);
 }
 
-.adImage {
+/* for future use */
+.adsContainer:hover {
+  cursor: pointer;
+}
+
+.adsImage {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/**********
+** OTHER **
+**********/
+
+.loadingContainer {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
   width: 100%;
   height: 100%;
 }

@@ -1,8 +1,10 @@
-import { ref, watchEffect, onBeforeUnmount } from "vue";
 import "/src/style.css";
 
+import { ref, watchEffect, onBeforeUnmount } from "vue";
 
-export default {
+
+// TODO: standardize this very non-standard view
+export const AdsView = {
   setup() {
     const adContext = import.meta.globEager("/img/ads/*.jpg");
 
@@ -41,7 +43,7 @@ export default {
 
   render() {
     return (
-      <img className="adImage"
+      <img className="adsImage"
         src = {this.currentAdSource}
       />
     );

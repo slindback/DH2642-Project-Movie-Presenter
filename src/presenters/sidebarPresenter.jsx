@@ -1,9 +1,16 @@
-import SidebarView from "/src/views/sidebarView.jsx";
+import { SidebarView } from "/src/views/sidebarView.jsx";
 
 
-export default
-function Sidebar(props) {
-  return (
-    <SidebarView/>
-  );
-}
+export function Sidebar(props) {
+    
+    return (
+      <SidebarView
+        movies = {props.model.movies}
+        onSelectBookmark = {handleSelectBookmarkACB}
+      />
+    );
+
+    function handleSelectBookmarkACB(movie) {
+      props.model.setCurrentMovie(movie.id)
+    }
+};
