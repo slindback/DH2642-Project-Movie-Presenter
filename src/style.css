@@ -240,9 +240,9 @@ body {
 
 
 
-/********************
-** CENTER > DETAILS**
-********************/
+/*********************
+** CENTER > DETAILS **
+*********************/
 
 .detailsContainer {
   text-align: left;
@@ -321,17 +321,4 @@ body {
 
 .loadingImage {
 
-}
-
-.returnButton {
-  background: transparent;
-
-  cursor: pointer;
-  
-  border: none;
-}
-
-.returnButtonIcon {
-  width: 24px;
-  height: 24px;
 }

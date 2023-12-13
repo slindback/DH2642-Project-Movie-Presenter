@@ -9,13 +9,6 @@ export function DetailsView(props) {
 
     return (
       <div className="detailsContainer">
-        <button className="returnButton" onClick={navigateToSearchACB}>
-          <img className="returnButtonIcon"
-            src = {adSource}
-            alt = "Back"
-          />
-        </button>
-
         <div className="detailsHeader">
           <div className="detailsHeaderTitle">
             <h1>{props.movieDetails.title || 'Title'}</h1>

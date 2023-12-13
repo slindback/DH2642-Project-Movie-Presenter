@@ -3,6 +3,8 @@ import { getDatabase, ref, get, set } from "firebase/database";
 
 import { FIREBASE_CONFIG } from "/src/firebaseConfig.js";
 
+import { getMoviesByIdArray } from "/src/movieSource";
+
 
 const app = initializeApp(FIREBASE_CONFIG);
 const db = getDatabase(app);
@@ -42,7 +44,7 @@ function persistenceToModel(data, model) {
 
     // update model
     model.setCurrentMovie(currentMovie);
-    return getMovieDetails(movies)
+    return getMoviesByIdArray(movies)
       .then(saveMoviesToModelACB);
 };
 
@@ -57,7 +59,7 @@ function readFromFirebase(model) {
         return persistenceToModel(snapshot.val(), model);
     };
 
-    function setModelReadyCB(model) {
+    function setModelReadyCB() {
         model.ready = true; 
     };
 

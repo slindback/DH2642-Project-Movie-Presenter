@@ -8,6 +8,12 @@ import {
 } from '/src/tmdbConfig.js';
 
 
+export function getMoviesByIdArray(movieIdArray) {
+    return new Promise((resolve) => {
+        resolve(movieIdArray.map(getMovieById));
+    });
+}
+
 export function getMovieById(movieId) {
     const URL = BASE_URL + FIND + movieId;
 
