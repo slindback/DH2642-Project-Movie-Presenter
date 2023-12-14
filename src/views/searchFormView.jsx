@@ -8,22 +8,35 @@ export function SearchFormView(props) {
     const imgSource = Object.values(imgContext).map((module) => module.default);
 
     return (
-      <form className="searchFormContainer" onSubmit={handleSearchRequestACB}>
-        <input
-          className = "searchFormInput"
-          type = "text"
-          placeholder = "Search"
-          value = {props.text || ""}
-          onChange = {handleInputUpdateACB}
-        />
-        <button className="searchFormButton" onClick={handleSearchRequestACB}>
-          <img
-            src = {imgSource[1]}
-            alt = "Search"
-            className = "searchFormButtonIcon"
-          />
-        </button>
-      </form>
+      <div className="searchBarContainer">
+        <div>
+          <form className="searchFormContainer" onSubmit={handleSearchRequestACB}>
+            <input
+              className = "searchFormInput"
+              type = "text"
+              placeholder = "Search"
+              value = {props.text || ""}
+              onChange = {handleInputUpdateACB}
+            />
+            <button className="searchFormButton" onClick={handleSearchRequestACB}>
+              <img
+                src = {imgSource[1]}
+                alt = "Search"
+                className = "searchFormButtonIcon"
+              />
+            </button>
+          </form>
+        </div>
+        <div className="filterButtonContainer">
+          <button className="filterButton" onClick={openFilterMenuACB}>
+            <img
+              src = {imgSource[0]}
+              alt = "Filter"
+              className = "filterButtonIcon"
+            />
+          </button>
+        </div>
+      </div>
     );
 
     function handleInputUpdateACB(event) {

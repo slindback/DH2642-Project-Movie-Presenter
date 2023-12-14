@@ -39,7 +39,7 @@
 
 body {
   background-color: var(--COLOR-background);
-  
+
   margin: 0px;
 }
 
@@ -69,7 +69,7 @@ body {
 
 .topnavContainer {
   background-color: var(--COLOR-topnav);
-  
+
   position: fixed;
   top: 0px;
   z-index: 100;
@@ -119,21 +119,21 @@ body {
 
 .sidebarContainer {
   background-color: var(--COLOR-content);
-  
+
   display: flex;
   justify-content: center;
 
   flex-basis: var(--SIZE-sidebar);
   flex-grow: 0;
   flex-shrink: 0;
-  
+
   height: calc(100vh - var(--SIZE-topnav) - var(--SIZE-margin)*2);
   width: var(--SIZE-sidebar)
 }
 
 .sidebarText {
   padding-top: calc(var(--SIZE-margin)*2);
-  
+
   font-size: var(--FONT-medium);
   text-align: center;
 }
@@ -155,7 +155,7 @@ body {
   /* same size as the API gives us */
   width: 154px;
   height: 231px;
-  
+
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
   border-radius: 5px;
@@ -168,7 +168,6 @@ body {
 
   cursor: pointer;
 }
-
 
 
 /***********
@@ -251,6 +250,30 @@ body {
   height: 20px;
 }
 
+.searchBarContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.filterButtonContainer {
+  margin-top: 5px;
+}
+
+.filterButtonIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.filterButton {
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  margin-right: 10px;
+}
+
+.filterContainer {
+  margin-top: 5px;
+}
 
 
 /*****************************
@@ -264,7 +287,7 @@ body {
 .searchResultText {
   padding-top: calc(var(--SIZE-margin)*4);
   padding-left: calc(var(--SIZE-margin)*2);
-  
+
   font-size: var(--FONT-big);
   text-align: left;
 }
@@ -288,7 +311,7 @@ body {
 
 .searchResultCard:hover {
   transform: scale(1.05);
-  
+
   box-shadow: var(--COLOR-shadow-big);
 
   cursor: pointer;
