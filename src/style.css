@@ -255,8 +255,14 @@ body {
   gap: 10px;
 }
 
+.sideBarOptionsContainer {
+  display: flex;
+  gap: 105px;
+}
+
 .filterButtonContainer {
   margin-top: 5px;
+  margin-left: 10px;
 }
 
 .filterButtonIcon {
@@ -271,10 +277,32 @@ body {
   margin-right: 10px;
 }
 
-.filterContainer {
-  margin-top: 5px;
+.removeAllButton {
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  margin-right: 10px;
 }
 
+.filterContainer {
+  margin-top: 5px;
+  position: relative;
+}
+
+.filterMenu {
+  display: none; /* Initially hide the dropdown menu */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--COLOR-content);
+  border: 1px solid var(--COLOR-content-front);
+  box-shadow: var(--COLOR-shadow-small);
+  z-index: 1;
+}
+
+.filterMenu.show {
+  display: block; /* Show the dropdown menu when the "show" class is present */
+}
 
 /*****************************
 ** CENTER > SEARCH > RESULT **

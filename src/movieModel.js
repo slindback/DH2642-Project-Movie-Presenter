@@ -19,6 +19,10 @@ export default {
         this.removeMovieById(movieToRemove.id);
     },
 
+    removeAllMovies() {
+        this.movies = [];
+    },
+
     removeMovieById(movieIdToRemove) {
         function shouldWeKeepMovieCB(movie) {
             return movie.id !== movieIdToRemove;
