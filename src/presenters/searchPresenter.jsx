@@ -11,46 +11,46 @@ export function Search(props) {
         <div className="searchFormContainer">
           <SearchFormView
             text = {props.model.searchParams.query}
-            onSearchRequest = {handleSearchRequestACB}
-            onInputUpdate = {handleInputUpdateACB}
+            onSearchRequest = {handleSearchACB}
+            onInputUpdate = {handleInputACB}
           />
         </div>
         <div className="searchResultContainer">
           <div className="searchResultText">
-            <h2>{props.model.searchParams.query ? "Search Results" : "Top Movies Today"}</h2>
+            {props.model.searchParams.query ? "Search Results" : "Top Movies Today"}
           </div>
-          {renderResultsViewCB()}
+          {renderSearchResultView()}
         </div>
       </div>
     );
 
-    function renderResultsViewCB() {
+    function renderSearchResultView() {
 
-        function searchResultViewRenderCB() {
+        function renderSearchResultViewCB() {
 
-            function handleSelectResultACB(movie) {
+            function handleSelectACB(movie) {
                 props.model.setCurrentMovie(movie.id);
             };
 
             return (
               <SearchResultView
                 searchResults = {props.model.searchResultPromiseState.data}
-                onSelectResult = {handleSelectResultACB}
+                onSelect = {handleSelectACB}
               />
             );
         };
 
         return renderPromiseState(
             props.model.searchResultPromiseState,
-            searchResultViewRenderCB,
+            renderSearchResultViewCB,
         );
     };
 
-    function handleSearchRequestACB() {
+    function handleSearchACB() {
         props.model.doSearch(props.model.searchParams);
     };
 
-    function handleInputUpdateACB(query) {
+    function handleInputACB(query) {
         props.model.setSearchQuery(query);
     };
 };

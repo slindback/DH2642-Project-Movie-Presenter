@@ -30,7 +30,7 @@ export function DetailsView(props) {
 
             <div className="detailsInformationGenres">
               {props.movies.genres.map((genre, index) => (
-                <div key={index} className="genreBubble">
+                <div key={index} className="detailsInformationGenresBubble">
                   <p>{genre.name}</p>
                 </div>
               ))}

@@ -6,11 +6,11 @@ export function Sidebar(props) {
     return (
       <SidebarView
         movies = {props.model.movies}
-        onSelectBookmark = {handleSelectBookmarkACB}
+        onSelect = {handleSelectACB}
       />
     );
 
-    function handleSelectBookmarkACB(movie) {
+    function handleSelectACB(movie) {
       props.model.setCurrentMovie(movie.id)
     }
 };

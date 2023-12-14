@@ -8,7 +8,7 @@ export function SearchFormView(props) {
     const imgSource = Object.values(imgContext).map((module) => module.default);
 
     return (
-      <form onSubmit={handleSearchRequestACB} className="searchFormContainer">
+      <form className="searchFormContainer" onSubmit={handleSearchRequestACB}>
         <input
           className = "searchFormInput"
           type = "text"

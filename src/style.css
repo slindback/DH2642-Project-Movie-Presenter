@@ -1,24 +1,63 @@
+/**************
+** VARIABLES **
+**************/
+
+:root {
+  /* material color scheme */
+  --COLOR-background: #101010;
+  --COLOR-topnav: #202020;
+
+  --COLOR-content-back: #151515;
+  --COLOR-content: #1B1B1B;
+  --COLOR-content-front: #1D1D1D;
+  --COLOR-content-active: #1F1F1F;
+
+  --COLOR-text: #A0A0A0;
+  --COLOR-text-big: #E2E2E2;
+  --COLOR-text-active: #FFFFFF;
+
+  --COLOR-shadow-small: 0px 0px 16px 8px #30303088;
+  --COLOR-shadow-big: 0px 0px 16px 16px #30303088;
+
+  /* shape sizes */
+  --SIZE-margin: 10px;  /* width and height */
+  --SIZE-topnav: 40px;  /* height */
+  --SIZE-sidebar: calc(154px + var(--SIZE-margin)*4);  /* width */
+
+  /* font sizes */
+  --FONT-small: 16px;
+  --FONT-medium: 20px;
+  --FONT-big: 24px;
+}
+
+
+
 /************
 ** GENERAL **
 ************/
 
 body {
-  background-color: #191919;
-  color: #DDDDDD; /* Text color */
-
+  background-color: var(--COLOR-background);
+  
   margin: 0px;
 }
 
 .root {
-
+  font-family: 'Netflix Font', sans-serif;
+  color: var(--COLOR-text);
 }
 
 .mainContainer {
   display: flex;
 
-  gap: 10px;
+  gap: var(--SIZE-margin);
+  margin: var(--SIZE-margin);
+  margin-top: calc(var(--SIZE-topnav) + var(--SIZE-margin));
+}
 
-  margin-top: 50px;
+/* removes scrollbars */
+::-webkit-scrollbar {
+  width: 0px;
 }
 
 
@@ -28,51 +67,47 @@ body {
 ***********/
 
 .topnavContainer {
-  background-color: #000000;
-
-  overflow: hidden;
-  z-index: 9999999;
-
+  background-color: var(--COLOR-topnav);
+  
   position: fixed;
   top: 0px;
+  z-index: 100;
 
   width: 100%;
-  height: 40px;
+  height: var(--SIZE-topnav);
 }
 
 .topnavSubcontainer {
   display: flex;
 
-  gap: 24px;
-  padding-top: 8px;
+  gap: calc(var(--SIZE-margin)*2);
+  padding-top: var(--SIZE-margin);
 }
 
 .topnavSubcontainerLeft {
-  padding-left: 10px;
   float: left;
+
+  padding-left: calc(var(--SIZE-margin)*2);
 }
 
 .topnavSubcontainerRight {
-  padding-right: 10px;
   float: right;
+
+  padding-right: calc(var(--SIZE-margin)*2);
 }
 
 .topnavLink {
   text-decoration: none;
-  margin-left: 20px;
-
-  font-size: 20px;
-  color: #DDDDDD;
-
-  font-family: 'Netflix Font', sans-serif;
+  font-size: var(--FONT-medium);
+  color: var(--COLOR-text-big);
 }
 
 .topnavLink:hover {
   transform: scale(1.05);
 
-  box-shadow: 0px 8px 16px #14141444;
+  box-shadow: var(--COLOR-shadow-small);
 
-  color: #FFFFFF;
+  color: var(--COLOR-text-active);
 }
 
 
@@ -82,51 +117,53 @@ body {
 ************/
 
 .sidebarContainer {
-  background-color: #0F0F0F;
+  background-color: var(--COLOR-content);
+  
+  display: flex;
+  justify-content: center;
 
-  flex-basis: 210px;
+  flex-basis: var(--SIZE-sidebar);
   flex-grow: 0;
   flex-shrink: 0;
-
-  height: calc(100vh - 60px);
-
-  text-align: center;
-
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  
+  height: calc(100vh - var(--SIZE-topnav) - var(--SIZE-margin)*2);
+  width: var(--SIZE-sidebar)
 }
 
 .sidebarText {
+  padding-top: calc(var(--SIZE-margin)*2);
+  
+  font-size: var(--FONT-medium);
   text-align: center;
-  font-family: 'Netflix Font', sans-serif;
 }
 
 .sidebarTable {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-  font-family: 'Netflix Font', sans-serif;
+
+  gap: calc(var(--SIZE-margin)*2);
+  padding: calc(var(--SIZE-margin)*2);
+
+  /* not sure where the 3px come from */
+  max-height: calc(100vh - var(--SIZE-topnav) - var(--FONT-medium) - var(--SIZE-margin)*7 - 3px);
+
+  overflow: scroll;
 }
 
 .sidebarTableRow {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  width: calc(100% - 20px);
-  padding: 10px;
-}
+  /* same size as the API gives us */
+  width: 154px;
+  height: 231px;
+  
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
-.sidebarTableRow img {
-  width: 150px;
-  height: 150px;
   border-radius: 5px;
 }
 
 .sidebarTableRow:hover {
   transform: scale(1.05);
 
-  box-shadow: 0px 8px 16px #14141444;
+  box-shadow: var(--COLOR-shadow-small);
 
   cursor: pointer;
 }
@@ -138,16 +175,13 @@ body {
 ************/
 
 .centerContainer {
-  background-color: #191919;
+  background-color: var(--COLOR-content-back);
 
   flex-grow: 1;
 
-  max-height: calc(100vh - 60px);
-  overflow-y: scroll;
-}
+  max-height: calc(100vh - var(--SIZE-topnav) - var(--SIZE-margin)*2);
 
-.centerContainer::-webkit-scrollbar {
-  width: 0px;
+  overflow-y: scroll;
 }
 
 
@@ -167,38 +201,35 @@ body {
 ***************************/
 
 .searchFormContainer {
-  margin-top: 10px;
+  /* 500px; not sure why you set this to 500px */
   width: 500px;
-  height: 32px;
-  background-color: #555555;
+  height: calc(var(--FONT-small) + var(--SIZE-margin)*2);
 }
 
 .searchFormInput {
-  background-color: #FFFFFF;
+  background-color: var(--COLOR-content);
 
   height: 100%;
-  width: calc(100% - 4px); /* not sure where the 4px comes from, but this removes it */
+  width: 100%;
 
   border: none;
-  border: 1px solid #000;
   outline: none;
 
-  text-align: left;
-  text-indent: 10px;
-
-  font-size: 16px;
+  font-size: var(--FONT-small);
+  text-indent: var(--SIZE-margin);
   color: #636363;
-
-  font-family: 'Netflix Font', sans-serif;
 }
 
 .searchFormInput:hover {
-  background-color: #D3D3D3;
+  background-color: var(--COLOR-content-front);
+}
+
+.searchFormInput:focus {
+  background-color: var(--COLOR-content-active);
 }
 
 .searchFormInput::placeholder {
   color: #8E8E8E;
-  text-align: left;
   text-indent: 10px;
 }
 
@@ -207,7 +238,7 @@ body {
 
   position: relative;
   float: right;
-  top: -28px;
+  top: -30px;
 
   cursor: pointer;
 
@@ -221,7 +252,6 @@ body {
 
 
 
-
 /*****************************
 ** CENTER > SEARCH > RESULT **
 *****************************/
@@ -231,225 +261,227 @@ body {
 }
 
 .searchResultText {
-  padding-left: 0;
-  margin-left: 25px;
-  margin-top: 40px;
-  font-family: 'Netflix Font', sans-serif;
+  padding-top: calc(var(--SIZE-margin)*4);
+  padding-left: calc(var(--SIZE-margin)*2);
+  
+  font-size: var(--FONT-big);
+  text-align: left;
 }
 
 .searchResultGrid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
 
+  gap: calc(var(--SIZE-margin)*2);
+  padding: calc(var(--SIZE-margin)*2);
 }
 
 .searchResultCard {
-  position: relative;
-  width: 300px;
-  height: 500px;
-  margin-bottom: 30px;
+
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  box-shadow: 0px 4px 8px #14141422;
-  overflow: hidden;
+
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .searchResultCard:hover {
   transform: scale(1.05);
-  box-shadow: 0px 8px 16px #14141444;
+  
+  box-shadow: var(--COLOR-shadow-big);
+
   cursor: pointer;
 }
 
-.searchResultCard:hover .searchResultCardText {
-  opacity: 10;
-}
-
 .searchResultCardImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.searchResultCardTitle {
-  color: #DDDDDD;
-  font-size: 16px;
-  text-align: center;
-
-  font-family: 'Netflix Font', sans-serif;
+  /* same size as the API gives us */
+  width: 300px;
+  height: 450px;
 }
 
 .searchResultCardText {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 40px;
+  background-color: var(--COLOR-content-active);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #171717;
-  opacity: 0; /* Initially hidden */
-  transition: opacity 0.2s ease-in-out;
 
-  font-family: 'Netflix Font', sans-serif;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 40px;
+
+  font-size: var(--FONT-small);
+  color: var(--COLOR-text);
+
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
 }
 
-  /*********************
-  ** CENTER > DETAILS **
-  *********************/
-
-  .detailsContainer {
-    display: grid;
-
-    height: calc(100vh - 60px);
-  }
-
-  .detailsBackground {
-    grid-column: 1;
-    grid-row: 1;
-    z-index: 1;
-
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-
-    filter: brightness(50%);
-  }
-
-  .detailsContent {
-    grid-column: 1;
-    grid-row: 1;
-    z-index: 2;
-
-    display: flex;
-  }
-
-  .detailsInformation {
-    width: 60%;
-  }
-
-  .detailsInformationTitle {
-    margin-left: 20px;
-    font-family: 'Netflix Font', sans-serif;
-  }
-
-  .detailsInformationRating {
-    margin-left: 20px;
-    font-family: 'Netflix Font', sans-serif;
-  }
-
-  .detailsInformationYear {
-    margin-left: 20px;
-    font-family: 'Netflix Font', sans-serif;
-  }
-
-  .detailsInformationGenres {
-    margin-left: 20px;
-    font-family: 'Netflix Font', sans-serif;
-    display: flex;
-    gap: 5px;
-    flex-wrap: wrap;
-  }
-
-  .genreBubble {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background-color: rgba(73, 73, 73, 0.7);
-    border-radius: 5px;
-    padding: 5px;
-    height: 20px; /* Adjust the height as needed */
-  }
-
-  .detailsInformationDescription {
-    margin-left: 20px;
-    font-family: 'Netflix Font', sans-serif;
-  }
-
-  .detailsPoster {
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
-    align-items: center;
-
-    width: 40%;
-  }
-
-  .detailsPosterImage {
-    height: 450px;
-    width: 300px;
-
-    padding-bottom: 10px;
-  }
-
-  .detailsPosterButton {
-    background: rgba(23, 23, 23, 0.7);
-
-    width: 300px;
-    height: 40px;
-
-    cursor: pointer;
-
-    border: none;
-    border-radius: 10px;
-
-    font-size: 20px;
-    color: #DDDDDD;
-
-    font-family: 'Netflix Font', sans-serif;
-  }
-
-  .detailsPosterButton:hover {
-    box-shadow: 0px 8px 16px #14141444;
-
-    background: #333333;
-  }
+.searchResultCard:hover
+.searchResultCardText {
+  opacity: 1;
+}
 
 
 
-  /********
-  ** ADS **
-  ********/
+/*********************
+** CENTER > DETAILS **
+*********************/
 
-  .adsContainer {
-    background-color: #141414;
+.detailsContainer {
+  display: grid;
 
-    flex-basis: 256px;
-    flex-grow: 0;
-    flex-shrink: 0;
+  height: calc(100vh - var(--SIZE-topnav) - var(--SIZE-margin)*2);
+}
 
-    height: calc(100vh - 60px);
-  }
+.detailsBackground {
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 1;
 
-  /* for future use */
-  .adsContainer:hover {
-    cursor: pointer;
-  }
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 
-  .adsImage {
-    width: 100%;
-    height: 100%;
-  }
+  filter: brightness(50%);
+}
+
+.detailsContent {
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 2;
+
+  display: flex;
+}
+
+.detailsInformation {
+  margin: calc(var(--SIZE-margin)*2);
+  margin-top: 0px;
+
+  width: 60%;
+}
+
+.detailsInformationTitle {
+
+}
+
+.detailsInformationRating {
+
+}
+
+.detailsInformationYear {
+
+}
+
+.detailsInformationGenres {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 5px;
+}
+
+.detailsInformationGenresBubble {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--COLOR-content-active);
+
+  border-radius: 5px;
+  padding: 5px;
+
+  height: 20px;
+}
+
+.detailsInformationDescription {
+
+}
+
+.detailsPoster {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: var(--SIZE-margin);
+
+  width: 40%;
+}
+
+.detailsPosterImage {
+  /* same size as the API gives us */
+  height: 450px;
+  width: 300px;
+}
+
+.detailsPosterButton {
+  background: var(--COLOR-content-front);
+
+  /* same width image above */
+  width: 300px;
+  height: 40px;
+
+  cursor: pointer;
+
+  border: none;
+  border-radius: 10px;
+
+  transition: transform 0.2s ease-in-out;
+
+  font-size: 20px;
+  color: var(--COLOR-text);
+}
+
+.detailsPosterButton:hover {
+  transform: scale(1.05);
+
+  background: var(--COLOR-content-active);
+}
 
 
 
-  /**********
-  ** OTHER **
-  **********/
+/********
+** ADS **
+********/
 
-  .loadingContainer {
-    display: flex;
+.adsContainer {
+  background-color: #141414;
 
-    justify-content: center;
-    align-items: center;
+  flex-basis: var(--SIZE-sidebar);
+  flex-grow: 0;
+  flex-shrink: 0;
 
-    width: 100%;
-    height: 100%;
-  }
+  height: calc(100vh - var(--SIZE-topnav) - var(--SIZE-margin)*2);
+}
 
-  .loadingImage {
+/* for future use */
+.adsContainer:hover {
+  cursor: pointer;
+}
 
-  }
+.adsImage {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/**********
+** OTHER **
+**********/
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.loadingImage {
+
+}

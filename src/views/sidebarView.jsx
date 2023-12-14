@@ -4,27 +4,28 @@ import "/src/style.css";
 export function SidebarView(props) {
 
     return (
-    <div>
-      <div className="sidebarText">
-        <h3>Watchlist</h3>
-      </div>
-      <div className="sidebarTable">
-        {props.movies.map(showBookmarkCB)}
-      </div>
-    </div>
-  );
-
-  function showBookmarkCB(movie) {
-    return (
-      <div key={movie.id} className="sidebarTableRow" onClick={() => handleSelectBookmarkACB(movie)}>
-      <img src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt={movie.title} />
-
+      <div>
+        <div className="sidebarText">
+          Watchlist
+        </div>
+        <div className="sidebarTable">
+          {props.movies.map(renderTableRowCB)}
+        </div>
       </div>
     );
 
-    function handleSelectBookmarkACB(movie) {
-      props.onSelectBookmark(movie);
-      window.location.hash = "details";
-    }
-  }
-}
+    function renderTableRowCB(movie) {
+        return (
+          <img className="sidebarTableRow"
+            src = {"https://image.tmdb.org/t/p/w154" + movie.poster_path}
+            onClick = {handleSelectACB}
+            key = {movie.title}
+          />
+        );
+
+        function handleSelectACB(event) {
+            props.onSelect(movie);
+            window.location.hash = "details";
+        };
+    };
+};
