@@ -59,5 +59,6 @@ export function DetailsView(props) {
       } else {
         props.onMovieAdd();
       };
+      window.location.hash = "search";
     };
 };
