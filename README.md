@@ -33,7 +33,6 @@ The user will be able to search for movies (data from IMDb) and filter on genre/
 ## Changelog
 
 ### 2023-12-14
-- Implemented the sidebar
 - Updated the CSS
 - Added new buttons for upcoming filter feature
   - This includes a "clear all" button which is fully implemented
