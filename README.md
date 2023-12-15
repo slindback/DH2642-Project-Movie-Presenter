@@ -32,11 +32,26 @@ The user will be able to search for movies (data from IMDb) and filter on genre/
 
 ## Changelog
 
+### 2023-12-14
+- Implemented the sidebar
+- Updated the CSS
+- Added new buttons for upcoming filter feature
+  - This includes a "clear all" button which is fully implemented
+- Adding or removing a movie now redirects from /details to /search
+
+### 2023-12-13
+- Implemented the sidebar
+- Fixed bugs relating to persistence
+
 ### 2023-12-12
 - Revamped the CSS
   - Included are minor changes to view structure to better fit the CSS
 - Added a basic topnav
 - Standardized the code strucutre
+- Implemented basic persistence (not per user)
+
+### 2023-12-11
+- Solved the issue of custom images not loading properly
 
 ### 2023-12-08
 - Added back button in details view and dynamically changing title in search result view (“Rearch results” if search has been made, else “Top trending movies today”)
