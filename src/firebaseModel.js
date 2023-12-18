@@ -24,7 +24,7 @@ function modelToPersistence(model) {
     function compareMovieIdCB(id1, id2) {
         return id1 - id2;
     };
-    
+
     return {
         movies: model.movies.map(getMovieIdCB).sort(compareMovieIdCB),
         currentMovie: model.currentMovie,
@@ -65,7 +65,7 @@ function readFromFirebase(model) {
     };
 
     function setModelReadyCB() {
-        model.ready = true; 
+        model.ready = true;
     };
 
     model.ready = false;
