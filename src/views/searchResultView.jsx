@@ -1,12 +1,9 @@
 import "/src/style.css";
 
-
 export function SearchResultView(props) {
-  const sortedResults = sortSearchResults(props.selectedSortOption, props.searchResults);
-
     return (
       <div className="searchResultGrid">
-        {sortedResults.map(renderCardCB)}
+        {props.searchResults.map(renderCardCB)}
       </div>
     );
 

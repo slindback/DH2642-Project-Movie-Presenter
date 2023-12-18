@@ -99,13 +99,12 @@ export function SearchFormView(props) {
       document.addEventListener("click", handleOutsideClick);
 
       function handleSortOptionSelected(option) {
-          console.log(`Sort by ${option}`);
-          console.log(props.searchResults);
-          const sortedResults = sortSearchResults(option, props.searchResults);
-          props.model.setSortedSearchResults(sortedResults);
-          document.body.removeChild(dropdown);
-          document.removeEventListener("click", handleOutsideClick);
-          dropdownRemoved = true;
+        console.log(`Sort by ${option}`);
+        const sortedResults = sortSearchResults(option, props.searchResults);
+        props.model.setSortedSearchResults(sortedResults);
+        document.body.removeChild(dropdown);
+        document.removeEventListener("click", handleOutsideClick);
+        dropdownRemoved = true;
       }
 
       function sortSearchResults(option, results) {
@@ -123,11 +122,14 @@ export function SearchFormView(props) {
         });
       }
 
-      function handleOutsideClick(e) {
-          if (!dropdownRemoved && !dropdown.contains(e.target) && e.target !== sortButton) {
-              document.body.removeChild(dropdown);
-              document.removeEventListener("click", handleOutsideClick);
-          }
+    function handleOutsideClick(e) {
+      if (dropdown && !dropdownRemoved) {
+        if (!dropdown.contains(e.target) && e.target !== sortButton) {
+          document.body.removeChild(dropdown);
+          dropdownRemoved = true;
+          document.removeEventListener("click", handleOutsideClick);
+        }
       }
+    }
   }
 };
