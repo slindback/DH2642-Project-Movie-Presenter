@@ -17,6 +17,3 @@ app.mount("#root");
 // bootstrapping
 connectToFirebase(reactiveModel, watch);
 reactiveModel.doSearch({});
-
-// debug
-window.myModel = reactiveModel;
