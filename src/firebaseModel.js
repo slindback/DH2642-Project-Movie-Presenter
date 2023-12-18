@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, get, set } from "firebase/database";
+import { getAuth, signInAnonymously  } from "firebase/auth";
 
 import { FIREBASE_CONFIG } from "/src/firebaseConfig.js";
 
@@ -9,6 +10,9 @@ import { getMoviesByIdArray } from "/src/movieSource";
 const app = initializeApp(FIREBASE_CONFIG);
 const db = getDatabase(app);
 const PATH = "WatchLater";
+
+const auth = getAuth();
+let userId = null;
 
 
 function modelToPersistence(model) {
@@ -50,7 +54,7 @@ function persistenceToModel(data, model) {
 
 function saveToFirebase(model) {
     if (model.ready) {
-        set(ref(db, PATH + "/persistence"), modelToPersistence(model));
+        set(ref(db, PATH + "/" + userId), modelToPersistence(model));
     };
 };
 
@@ -65,7 +69,7 @@ function readFromFirebase(model) {
     };
 
     model.ready = false;
-    get(ref(db, PATH + "/persistence"))
+    get(ref(db, PATH + "/" + userId))
       .then(getFirebaseSnapshotAsJsonACB)
       .then(setModelReadyCB);
 };
@@ -80,6 +84,20 @@ export function connectToFirebase(model, watchFunction){
         return saveToFirebase(model);
     };
 
-    readFromFirebase(model);
-    watchFunction(getModelAsJsonACB, saveToFirebaseACB);
+    function readFromFirebaseCB() {
+        readFromFirebase(model);
+        watchFunction(
+            getModelAsJsonACB,
+            saveToFirebaseACB,
+        );
+    }
+
+    function handleSignInACB(userCredentials) {
+        userId = userCredentials.user.uid;
+        return Promise.resolve();
+    };
+
+    signInAnonymously(auth)
+      .then(handleSignInACB)
+      .then(readFromFirebaseCB);
 };
