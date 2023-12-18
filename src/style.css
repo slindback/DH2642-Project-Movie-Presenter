@@ -258,11 +258,27 @@ body {
 .sideBarOptionsContainer {
   display: flex;
   gap: 105px;
+  margin-left: 10px;
+}
+
+.searchFormOptionsContainer {
+  display: flex;
+  gap: 5px;
 }
 
 .filterButtonContainer {
-  margin-top: 5px;
+  margin-top: 10px;
+}
+
+.sortButtonContainer {
+  margin-top: 10px;
   margin-left: 10px;
+}
+
+.removeAllButtonContainer {
+  margin-top: 10px;
+  margin-left: 10px;
+  gap: 10px;
 }
 
 .filterButtonIcon {
@@ -271,6 +287,18 @@ body {
 }
 
 .filterButton {
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  margin-right: 10px;
+}
+
+.sortButtonIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.sortButton {
   background: transparent;
   cursor: pointer;
   border: none;
@@ -289,19 +317,23 @@ body {
   position: relative;
 }
 
-.filterMenu {
-  display: none; /* Initially hide the dropdown menu */
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: var(--COLOR-content);
-  border: 1px solid var(--COLOR-content-front);
-  box-shadow: var(--COLOR-shadow-small);
-  z-index: 1;
+.dropdown {
+    position: absolute;
+    background-color: var(--COLOR-content);
+    box-shadow: var(--COLOR-shadow-small);
+    z-index: 1;
 }
 
-.filterMenu.show {
-  display: block; /* Show the dropdown menu when the "show" class is present */
+.dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s;
+    color: var(--COLOR-text);
+}
+
+.dropdown-item:hover {
+    background-color: var(--COLOR-content);
 }
 
 /*****************************

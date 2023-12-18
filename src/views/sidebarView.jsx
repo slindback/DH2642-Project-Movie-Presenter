@@ -22,7 +22,7 @@ export function SidebarView(props) {
               />
             </button>
           </div>
-          <div>
+          <div className="removeAllButtonContainer">
             <button className="removeAllButton" onClick={handleRemoveAllClickACB}>
               <img
                 src = {imgSource[2]}
