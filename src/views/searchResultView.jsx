@@ -2,10 +2,11 @@ import "/src/style.css";
 
 
 export function SearchResultView(props) {
+  const sortedResults = sortSearchResults(props.selectedSortOption, props.searchResults);
 
     return (
       <div className="searchResultGrid">
-        {props.searchResults.map(renderCardCB)}
+        {sortedResults.map(renderCardCB)}
       </div>
     );
 

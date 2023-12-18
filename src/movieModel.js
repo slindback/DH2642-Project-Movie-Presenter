@@ -51,4 +51,8 @@ export default {
       const promise = getMovieByQuery(searchParams.query || "");
       resolvePromise(promise, this.searchResultPromiseState);
     },
+
+    setSortedSearchResults(sortedResults) {
+      this.searchResultPromiseState.data = sortedResults;
+    },
 };

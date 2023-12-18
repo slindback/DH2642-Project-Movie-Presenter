@@ -100,10 +100,27 @@ export function SearchFormView(props) {
 
       function handleSortOptionSelected(option) {
           console.log(`Sort by ${option}`);
-          // TODO: Implement sorting logic based on the selected option
+          console.log(props.searchResults);
+          const sortedResults = sortSearchResults(option, props.searchResults);
+          props.model.setSortedSearchResults(sortedResults);
           document.body.removeChild(dropdown);
           document.removeEventListener("click", handleOutsideClick);
           dropdownRemoved = true;
+      }
+
+      function sortSearchResults(option, results) {
+        return results.slice().sort((a, b) => {
+          switch (option) {
+            case 'rating':
+              return b.vote_average - a.vote_average;
+            case 'popularity':
+              return b.popularity - a.popularity;
+            case 'year':
+              return parseInt(b.release_date.substring(0, 4)) - parseInt(a.release_date.substring(0, 4));
+            default:
+              return 0;
+          }
+        });
       }
 
       function handleOutsideClick(e) {

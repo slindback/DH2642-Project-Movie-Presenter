@@ -10,6 +10,8 @@ export function Search(props) {
       <div className="searchContainer">
         <div className="searchFormContainer">
           <SearchFormView
+            model = {props.model}
+            searchResults = {props.model.searchResultPromiseState.data}
             text = {props.model.searchParams.query}
             onSearchRequest = {handleSearchACB}
             onInputUpdate = {handleInputACB}
