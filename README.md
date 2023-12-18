@@ -32,6 +32,10 @@ The user will be able to search for movies (data from IMDb) and filter on genre/
 
 ## Changelog
 
+### 2023-12-18
+- Added per-user persistence (anonymous, no login required)
+
+
 ### 2023-12-14
 - Updated the CSS
 - Added new buttons for upcoming filter feature
