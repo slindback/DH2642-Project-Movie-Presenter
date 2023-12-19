@@ -5,6 +5,7 @@ export function Sidebar(props) {
 
     return (
       <SidebarView
+        model={props.model}
         movies={props.model.movies}
         onSelect={handleSelectACB}
         onRemoveAll={handleRemoveAllACB}

@@ -27,25 +27,14 @@ export function SearchFormView(props) {
             </button>
           </form>
         </div>
-        <div className="searchFormOptionsContainer">
-          <div className="sortButtonContainer">
-            <button className="sortButton" onClick={handleSortACB}>
-              <img
-                src = {imgSource[3]}
-                alt = "Sort"
-                className = "sortButtonIcon"
-              />
-            </button>
-          </div>
-          <div className="filterButtonContainer">
-            <button className="filterButton" onClick={openFilterMenuACB}>
-              <img
-                src = {imgSource[0]}
-                alt = "Filter"
-                className = "filterButtonIcon"
-              />
-            </button>
-          </div>
+        <div className="sortButtonContainer">
+          <button className="sortButton" onClick={handleSortACB}>
+            <img
+              src = {imgSource[3]}
+              alt = "Sort"
+              className = "sortButtonIcon"
+            />
+          </button>
         </div>
       </div>
     );
@@ -69,9 +58,9 @@ export function SearchFormView(props) {
       const sortButton = event.currentTarget;
       let dropdown = document.querySelector(".dropdown");
 
-      if (dropdown) {
-          document.body.removeChild(dropdown);
-          return;
+      if (dropdown && document.body.contains(dropdown)) {
+        document.body.removeChild(dropdown);
+        return;
       }
 
       dropdown = document.createElement("div");

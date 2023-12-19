@@ -55,4 +55,8 @@ export default {
     setSortedSearchResults(sortedResults) {
       this.searchResultPromiseState.data = sortedResults;
     },
+
+    setSortedMovies(sortedResults) {
+      this.movies = sortedResults;
+    },
 };

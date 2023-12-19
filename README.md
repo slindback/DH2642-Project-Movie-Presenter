@@ -33,7 +33,11 @@ The user will be able to search for movies (data from IMDb) and filter on genre/
 ## Changelog
 
 ### 2023-12-18
+- Implemented sorting of watchlist (and removed abandoned filter option)
+
+### 2023-12-18
 - Added per-user persistence (anonymous, no login required)
+- Implemented sorting of search results
 
 
 ### 2023-12-14
