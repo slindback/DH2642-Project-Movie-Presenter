@@ -323,7 +323,7 @@ body {
   position: absolute;
   background-color: var(--COLOR-content);
   box-shadow: var(--COLOR-shadow-small);
-  z-index: 1;
+  z-index: 1000;
 }
 
 .dropdown-item {
@@ -371,7 +371,7 @@ body {
   height: 450px;
 
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  
+
   border-radius: 10px;
   overflow: hidden;
 }
