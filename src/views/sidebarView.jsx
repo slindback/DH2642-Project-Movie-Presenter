@@ -71,6 +71,7 @@ export function SidebarView(props) {
         console.log(`Sort by ${option}`);
         console.log(props.movies);
         const sortedResults = sortSearchResults(option, props.movies);
+        console.log("!!!");
         console.log(sortedResults);
         props.model.setSortedMovies(sortedResults);
         document.body.removeChild(dropdown);
@@ -95,79 +96,7 @@ export function SidebarView(props) {
 
       function handleOutsideClick(e) {
         if (dropdown && !dropdownRemoved) {
-          if (!dropdown.contains(e.target) && e.target !== sortButton) {
-            document.body.removeChild(dropdown);
-            dropdownRemoved = true;
-            document.removeEventListener("click", handleOutsideClick);
-          }
-        }
-      }
-    }
-
-    function handleSortACB(event) {
-      event.stopPropagation(); // Stop the click event from propagating to the form
-
-      const sortButton = event.currentTarget;
-      let dropdown = document.querySelector(".dropdown");
-
-      if (dropdown && document.body.contains(dropdown)) {
-        document.body.removeChild(dropdown);
-        return;
-      }
-
-      dropdown = document.createElement("div");
-      dropdown.className = "dropdown";
-
-      const options = ["rating", "popularity", "year"];
-
-      options.forEach((option) => {
-          const optionElement = document.createElement("div");
-          optionElement.innerText = option;
-          optionElement.className = "dropdown-item";
-          optionElement.addEventListener("click", () => handleSortOptionSelected(option));
-          dropdown.appendChild(optionElement);
-      });
-
-      document.body.appendChild(dropdown);
-
-      const rect = sortButton.getBoundingClientRect();
-      dropdown.style.position = "absolute";
-      dropdown.style.top = `${rect.bottom}px`;
-      dropdown.style.left = `${rect.left}px`;
-
-      let dropdownRemoved = false; // Flag to track whether dropdown is removed
-
-      document.addEventListener("click", handleOutsideClick);
-
-      function handleSortOptionSelected(option) {
-        console.log(`Sort by ${option}`);
-        console.log(props.movies);
-        const sortedResults = sortSearchResults(option, props.movies);
-        console.log(sortedResults);
-        props.model.setSortedMovies(sortedResults);
-        document.body.removeChild(dropdown);
-        document.removeEventListener("click", handleOutsideClick);
-        dropdownRemoved = true;
-      }
-
-      function sortSearchResults(option, results) {
-        return results.slice().sort((a, b) => {
-          switch (option) {
-            case 'rating':
-              return b.vote_average - a.vote_average;
-            case 'popularity':
-              return b.popularity - a.popularity;
-            case 'year':
-              return parseInt(b.release_date.substring(0, 4)) - parseInt(a.release_date.substring(0, 4));
-            default:
-              return 0;
-          }
-        });
-      }
-
-      function handleOutsideClick(e) {
-        if (dropdown && !dropdownRemoved) {
-          if (!dropdown.contains(e.target) && e.target !== sortButton) {
+          if (document.body.contains(dropdown) && !dropdown.contains(e.target) && e.target !== sortButton) {
             document.body.removeChild(dropdown);
             dropdownRemoved = true;
             document.removeEventListener("click", handleOutsideClick);
