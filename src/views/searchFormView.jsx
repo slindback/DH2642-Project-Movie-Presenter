@@ -67,9 +67,9 @@ export function SearchFormView(props) {
       const sortButton = event.currentTarget;
       let dropdown = document.querySelector(".dropdown");
 
-      if (dropdown) {
-          document.body.removeChild(dropdown);
-          return;
+      if (dropdown && document.body.contains(dropdown)) {
+        document.body.removeChild(dropdown);
+        return;
       }
 
       dropdown = document.createElement("div");

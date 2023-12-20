@@ -180,6 +180,7 @@ body {
 }
 
 
+
 /***********
 ** CENTER **
 ************/
@@ -370,7 +371,7 @@ body {
   height: 450px;
 
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-
+  
   border-radius: 10px;
   overflow: hidden;
 }
