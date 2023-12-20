@@ -9,24 +9,22 @@ export function SearchFormView(props) {
 
     return (
       <div className="searchBarContainer">
-        <div>
-          <form className="searchFormContainer" onSubmit={handleSearchRequestACB}>
-            <input
-              className = "searchFormInput"
-              type = "text"
-              placeholder = "Search"
-              value = {props.text || ""}
-              onChange = {handleInputUpdateACB}
+        <form className="searchFormContainer" onSubmit={handleSearchRequestACB}>
+          <input
+            className = "searchFormInput"
+            type = "text"
+            placeholder = "Search"
+            value = {props.text || ""}
+            onChange = {handleInputUpdateACB}
+          />
+          <button className="searchFormButton" onClick={handleSearchRequestACB}>
+            <img
+              src = {imgSource[1]}
+              alt = "Search"
+              className = "searchFormButtonIcon"
             />
-            <button className="searchFormButton" onClick={handleSearchRequestACB}>
-              <img
-                src = {imgSource[1]}
-                alt = "Search"
-                className = "searchFormButtonIcon"
-              />
-            </button>
-          </form>
-        </div>
+          </button>
+        </form>
         <div className="searchFormOptionsContainer">
           <div className="sortButtonContainer">
             <button className="sortButton" onClick={handleSortACB}>

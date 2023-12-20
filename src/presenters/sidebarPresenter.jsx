@@ -5,9 +5,9 @@ export function Sidebar(props) {
 
     return (
       <SidebarView
-        movies={props.model.movies}
-        onSelect={handleSelectACB}
-        onRemoveAll={handleRemoveAllACB}
+        movies = {props.model.movies}
+        onSelect = {handleSelectACB}
+        onRemoveAll = {handleRemoveAllACB}
       />
     );
 

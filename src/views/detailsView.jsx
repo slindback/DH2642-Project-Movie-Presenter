@@ -5,45 +5,45 @@ export function DetailsView(props) {
 
     return (
       <div className="detailsContainer">
-
         <img className="detailsBackground"
-          src = {"https://image.tmdb.org/t/p/original" + props.movies.backdrop_path}
-          alt = {`${props.movies.title} backdrop`}
+          src = {"https://image.tmdb.org/t/p/original" + props.movie.backdrop_path}
         />
-
         <div className="detailsContent">
           <div className="detailsInformation">
-
             <div className="detailsInformationTitle">
-              <h1>{props.movies.title || ""}</h1>
-              <p>{props.movies.original_title || ""}</p>
+              <h1>{props.movie.title || ""}</h1>
+              <p>{props.movie.original_title || ""}</p>
             </div>
-
             <div className="detailsInformationRating">
-              <p>{props.movies.vote_average.toFixed(1)+"/10" || "?/10"}</p>
-              <p>{props.movies.vote_count + " votes" || '? votes'}</p>
+              <v-rating
+                half-increments
+                readonly
+                length = "10"
+                size = "32"
+                model-value = {props.movie.vote_average}
+                active-color = "warning"
+              />
+              <p>{props.movie.vote_average.toFixed(1)+"/10" || "?/10"}</p>
+              <p>{props.movie.vote_count + " votes" || '? votes'}</p>
             </div>
-
             <div className="detailsInformationYear">
-              <p>{props.movies.release_date.substring(0, 4) || 'Year not available'}</p>
+              <p>{props.movie.release_date.substring(0, 4) || 'Year not available'}</p>
             </div>
-
             <div className="detailsInformationGenres">
-              {props.movies.genres.map((genre, index) => (
+              {props.movie.genres.map((genre, index) => (
                 <div key={index} className="detailsInformationGenresBubble">
                   <p>{genre.name}</p>
                 </div>
               ))}
             </div>
             <div className="detailsInformationDescription">
-              <p>{props.movies.overview || 'Movie description not available'}</p>
+              <p>{props.movie.overview || 'Movie description not available'}</p>
             </div>
           </div>
-
           <div className="detailsPoster">
             <img className="detailsPosterImage"
-              src = {"https://image.tmdb.org/t/p/w300" + props.movies.poster_path}
-              alt = {`${props.movies.title} poster`}
+              src = {"https://image.tmdb.org/t/p/w300" + props.movie.poster_path}
+              alt = {`${props.movie.title} poster`}
             />
             <button className="detailsPosterButton" onClick={handleAddOrRemoveMovieACB}>
               {(props.isInWatchLater() ? "Remove from" : "Add to") + " Watchlist"}

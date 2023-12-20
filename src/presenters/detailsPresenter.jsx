@@ -13,7 +13,7 @@ export function Details(props) {
     function detailsViewRenderCB() {
         return (
           <DetailsView
-            movies = {props.model.currentMoviePromiseState.data}
+            movie = {props.model.currentMoviePromiseState.data}
             isInWatchLater = {isInWatchLaterCB}
             onMovieAdd = {handleMovieAddACB}
             onMovieRemove = {handleMovieRemoveACB}

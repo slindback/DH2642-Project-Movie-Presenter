@@ -12,6 +12,7 @@ import { Topnav } from "/src/presenters/topnavPresenter.jsx";
 export function VueRoot(props) {
     return (
       <div className="root">
+        <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet"></link>
         <div className="topnavContainer">
           <Topnav/>
         </div>
@@ -19,11 +20,9 @@ export function VueRoot(props) {
           <div className="sidebarContainer">
             <Sidebar model={props.model}/>
           </div>
-
           <div className="centerContainer">
             <RouterView/>
           </div>
-          
           <div className="adsContainer">
             <Ads/>
           </div>

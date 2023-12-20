@@ -1,17 +1,30 @@
 import { createApp, reactive, watch } from "vue";
 
+import { createVuetify } from "vuetify";
+import { VRating } from 'vuetify/components'
+
 import { VueRoot, makeRouter } from "/src/vuejs/VueRoot.jsx";
-
 import { connectToFirebase } from "/src/firebaseModel";
-import model  from "/src/movieModel.js";
+import model from "/src/movieModel.js";
 
 
-// application state
+// app
 const reactiveModel = reactive(model);
+const app = createApp(<VueRoot model={reactiveModel}/>);
+
+// vuetify
+const vuetify = createVuetify({
+    components: {
+        VRating,
+    },
+});
+app.use(vuetify);
+
+// router
+const router = makeRouter(reactiveModel);
+app.use(router);
 
 // mounting
-const app = createApp(<VueRoot model={reactiveModel}/>);
-app.use(makeRouter(reactiveModel));
 app.mount("#root");
 
 // bootstrapping

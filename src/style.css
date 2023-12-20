@@ -19,6 +19,7 @@
 
   --COLOR-shadow-small: 0px 0px 16px 8px #30303088;
   --COLOR-shadow-big: 0px 0px 16px 16px #30303088;
+  --COLOR-shadow-icon: 0px 0px 2px #000000FF;
 
   /* shape sizes */
   --SIZE-margin: 10px;  /* width and height */
@@ -41,6 +42,9 @@ body {
   background-color: var(--COLOR-background);
 
   margin: 0px;
+
+  height: 100%;
+  overflow: hidden;
 }
 
 .root {
@@ -128,11 +132,17 @@ body {
   flex-shrink: 0;
 
   height: calc(100vh - var(--SIZE-topnav) - var(--SIZE-margin)*2);
-  width: var(--SIZE-sidebar)
+  width: var(--SIZE-sidebar);
 }
 
 .sidebarText {
-  padding-top: calc(var(--SIZE-margin)*2);
+  display:flex;
+  justify-content: space-around;
+
+  width: var(--SIZE-sidebar);
+
+  padding-top: var(--SIZE-margin);
+  padding-bottom: var(--SIZE-margin);
 
   font-size: var(--FONT-medium);
   text-align: center;
@@ -252,33 +262,27 @@ body {
 
 .searchBarContainer {
   display: flex;
-  gap: 10px;
+  align-items: center;
 }
 
 .sideBarOptionsContainer {
   display: flex;
-  gap: 105px;
-  margin-left: 10px;
 }
 
 .searchFormOptionsContainer {
   display: flex;
-  gap: 5px;
 }
 
 .filterButtonContainer {
-  margin-top: 10px;
+
 }
 
 .sortButtonContainer {
-  margin-top: 10px;
-  margin-left: 10px;
+
 }
 
 .removeAllButtonContainer {
-  margin-top: 10px;
-  margin-left: 10px;
-  gap: 10px;
+
 }
 
 .filterButtonIcon {
@@ -290,7 +294,6 @@ body {
   background: transparent;
   cursor: pointer;
   border: none;
-  margin-right: 10px;
 }
 
 .sortButtonIcon {
@@ -302,14 +305,12 @@ body {
   background: transparent;
   cursor: pointer;
   border: none;
-  margin-right: 10px;
 }
 
 .removeAllButton {
   background: transparent;
   cursor: pointer;
   border: none;
-  margin-right: 10px;
 }
 
 .filterContainer {
@@ -318,22 +319,22 @@ body {
 }
 
 .dropdown {
-    position: absolute;
-    background-color: var(--COLOR-content);
-    box-shadow: var(--COLOR-shadow-small);
-    z-index: 1;
+  position: absolute;
+  background-color: var(--COLOR-content);
+  box-shadow: var(--COLOR-shadow-small);
+  z-index: 1;
 }
 
 .dropdown-item {
-    padding: 10px;
-    cursor: pointer;
-    user-select: none;
-    transition: background-color 0.3s;
-    color: var(--COLOR-text);
+  padding: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s;
+  color: var(--COLOR-text);
 }
 
 .dropdown-item:hover {
-    background-color: var(--COLOR-content);
+  background-color: var(--COLOR-content);
 }
 
 /*****************************
@@ -357,11 +358,16 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
 
-  gap: calc(var(--SIZE-margin)*2);
+  gap: calc(var(--SIZE-margin)*4);
   padding: calc(var(--SIZE-margin)*2);
 }
 
 .searchResultCard {
+  display: grid;
+
+  /* same size as the API gives us */
+  width: 300px;
+  height: 450px;
 
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
@@ -377,10 +383,22 @@ body {
   cursor: pointer;
 }
 
-.searchResultCardImage {
-  /* same size as the API gives us */
-  width: 300px;
-  height: 450px;
+.searchResultCardBackground {
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 1;
+
+  object-fit: cover;
+}
+
+.searchResultCardContent {
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 2;
+}
+
+.searchResultCardRating i {
+  filter: drop-shadow(var(--COLOR-shadow-icon));
 }
 
 .searchResultCardText {
@@ -399,6 +417,7 @@ body {
 
   font-size: var(--FONT-small);
   color: var(--COLOR-text);
+  text-align: center;
 
   opacity: 0;
   transition: opacity 0.2s ease-in-out;

@@ -10,27 +10,19 @@ export function SidebarView(props) {
     return (
       <div>
         <div className="sidebarText">
+          <button className="removeAllButton" onClick={handleRemoveAllACB}>
+            <img
+              src = {imgSource[2]}
+              className = "filterButtonIcon"
+            />
+          </button>
           Watchlist
-        </div>
-        <div className="sideBarOptionsContainer">
-          <div className="filterButtonContainer">
-            <button className="filterButton" onClick={openFilterMenuACB}>
-              <img
-                src = {imgSource[0]}
-                alt = "Filter"
-                className = "filterButtonIcon"
-              />
-            </button>
-          </div>
-          <div className="removeAllButtonContainer">
-            <button className="removeAllButton" onClick={handleRemoveAllClickACB}>
-              <img
-                src = {imgSource[2]}
-                alt = "Remove all"
-                className = "filterButtonIcon"
-              />
-            </button>
-          </div>
+          <button className="removeAllButton" onClick={handleSortACB}>
+            <img
+              src = {imgSource[3]}
+              className = "filterButtonIcon"
+            />
+          </button>
         </div>
         <div className="sidebarTable">
           {props.movies.map(renderTableRowCB)}
@@ -38,7 +30,7 @@ export function SidebarView(props) {
       </div>
     );
 
-    function handleRemoveAllClickACB() {
+    function handleRemoveAllACB() {
         // Show confirmation pop-up
         const isConfirmed = window.confirm("Are you sure you want to clear your watchlist?");
 
@@ -46,7 +38,11 @@ export function SidebarView(props) {
         if (isConfirmed) {
             props.onRemoveAll();
         }
-    }
+    };
+
+    function handleSortACB(event) {
+        console.log("Not yet implemented") // TODO
+    };
 
     function renderTableRowCB(movie) {
         return (
@@ -61,8 +57,5 @@ export function SidebarView(props) {
             props.onSelect(movie);
             window.location.hash = "details";
         };
-    };
-    function openFilterMenuACB(event) {
-        console.log("Not yet implemented") // TODO
     };
 };

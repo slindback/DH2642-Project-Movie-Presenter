@@ -9,14 +9,24 @@ export function SearchResultView(props) {
 
     function renderCardCB(movie) {
         return (
-          <span className="searchResultCard" key={movie.title} onClick={handleSelectACB}>
-            <img className="searchResultCardImage"
+          <div className="searchResultCard" key={movie.title} onClick={handleSelectACB}>
+            <img className="searchResultCardBackground"
               src={"https://image.tmdb.org/t/p/w300" + movie.poster_path}
             />
-            <div className="searchResultCardText">
-              {movie.title}
+            <div className="searchResultCardContent">
+              <v-rating className="searchResultCardRating"
+                half-increments
+                readonly
+                length = "10"
+                size = "30"
+                model-value = {movie.vote_average}
+                active-color = "warning"
+              />
+              <div className="searchResultCardText">
+                {movie.title}
+              </div>
             </div>
-          </span>
+          </div>
         );
 
         function handleSelectACB(event) {
