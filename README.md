@@ -20,19 +20,31 @@ The user will be able to search for movies (data from IMDb) and filter on genre/
   - movieModel.js [application model, stores all of the data]
   - movieSource.js [tmdb API implementation]
   - tmdbConfig.js [tmdb API configuration]
-  - utils.js [a set of helpful functions]
+  - utils.jsx [a set of helpful functions]
 
 
-## TODO:
-- implement the sidebar
-  - a "watch later" list of movies selected from the /search
-- improve /details presentation
-  - include a graph of the rating distribution (individual ratings 1-10)
+## Setup
+To setup the appplication you will need to do the following:
+- Create a Firebase application and enable the following modules
+  - Realtime Database
+  - Anonymous Authentication
+- Setup Firebase using your CLI
+  - First run ```npm install -g firease-tools```
+  - Then run ```firebase login```
+  - Finally run ```firebase init``` and follow the instructions
+- Update all ```null``` values in ```/src/firebaseConfig.js```
+- Create an account on [TheMovieDB](https://www.themoviedb.org/) and request an API Key (the process is nigh instantaneous as of 2023-12-03)
+- Update all ```null``` values in ```/src/tmdbConfig.js```
+- Run ```npm install```
+
+The local server is started with ```npm run dev``` and is located at http://localhost:8080/
+
+The public server is hosted using Firebase and is deployed to with ```npm run build; firebase deploy```
 
 
 ## Changelog
 
-### 2023-12-18
+### 2023-12-20
 - Added a third party ratings component to DetailsView and SearchResultView
 
 ### 2023-12-18
