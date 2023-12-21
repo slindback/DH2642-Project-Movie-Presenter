@@ -270,31 +270,14 @@ body {
   display: flex;
 }
 
-.searchFormOptionsContainer {
-  display: flex;
-}
-
-.filterButtonContainer {
-
-}
 
 .sortButtonContainer {
-
+  margin-top: 8px;
+  margin-left: 10px;
 }
 
 .removeAllButtonContainer {
 
-}
-
-.filterButtonIcon {
-  width: 20px;
-  height: 20px;
-}
-
-.filterButton {
-  background: transparent;
-  cursor: pointer;
-  border: none;
 }
 
 .sortButtonIcon {
@@ -312,11 +295,6 @@ body {
   background: transparent;
   cursor: pointer;
   border: none;
-}
-
-.filterContainer {
-  margin-top: 5px;
-  position: relative;
 }
 
 .dropdown {

@@ -25,7 +25,6 @@ export function SearchFormView(props) {
             />
           </button>
         </form>
-        <div className="searchFormOptionsContainer">
           <div className="sortButtonContainer">
             <button className="sortButton" onClick={handleSortACB}>
               <img
@@ -34,16 +33,6 @@ export function SearchFormView(props) {
                 className = "sortButtonIcon"
               />
             </button>
-          </div>
-          <div className="filterButtonContainer">
-            <button className="filterButton" onClick={openFilterMenuACB}>
-              <img
-                src = {imgSource[0]}
-                alt = "Filter"
-                className = "filterButtonIcon"
-              />
-            </button>
-          </div>
         </div>
       </div>
     );
@@ -97,7 +86,6 @@ export function SearchFormView(props) {
       document.addEventListener("click", handleOutsideClick);
 
       function handleSortOptionSelected(option) {
-        console.log(`Sort by ${option}`);
         const sortedResults = sortSearchResults(option, props.searchResults);
         props.model.setSortedSearchResults(sortedResults);
         document.body.removeChild(dropdown);
