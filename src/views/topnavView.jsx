@@ -2,16 +2,15 @@ import "/src/style.css";
 
 
 export function TopnavView(props) {
+    // TODO: change later - should probably be a function in utils.jsx
+    const imgContext = import.meta.globEager("/img/misc/watchlater-logo.png");
+    const logoImage = Object.values(imgContext).map((module) => module.default)[0];
 
     return (
-      <div>
         <div className="topnavSubcontainer topnavSubcontainerLeft">
-          <a className="topnavLink" href="#/search">WatchLater</a>
+          <a className="topnavLink" href="#/search">
+            <img src={logoImage} alt="WatchLater Logo" className="logoImage" />
+          </a>
         </div>
-        <div className="topnavSubcontainer topnavSubcontainerRight">
-          <a className="topnavLink" href="#/search">PlaceHolder1</a>
-          <a className="topnavLink" href="#/search">PlaceHolder2</a>
-        </div>
-      </div>
     );
 };
